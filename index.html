@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nicolas Nino — Portfolio</title>
+  <meta name="description" content="Simulation Engineer portfolio — Unreal Engine drone simulation, controls, ROS 2, PX4, sim-to-real." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="data:,">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nicolas Nino",
+    "jobTitle": "Simulation Engineer",
+    "url": "https://<your-github-username>.github.io",
+    "sameAs": ["https://github.com/<your-github-username>", "https://www.linkedin.com/in/<your-linkedin>"]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="/">NN</a>
+      <nav id="main-nav" class="nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="Nicolas_Nino_Resume.pdf">Resume</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <h1>Hi, I’m <span class="accent">Nicolas Nino</span></h1>
+          <p class="subtitle">Simulation Engineer · Controls · Robotics — building a high‑fidelity Unreal Engine quadcopter simulator with ROS 2/PX4 and a sim‑to‑real pipeline.</p>
+          <div class="cta-row">
+            <a class="btn" href="#projects">View Projects</a>
+            <a class="btn ghost" href="projects/unreal-drone.html">Flagship: Unreal Drone Sim</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <!-- Replace with your own headshot at /assets/img/headshot.jpg -->
+          <div class="photo-placeholder">Your Photo</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About Me</h2>
+        <p>
+          I’m an AFRL Scholars researcher and UCF Data Science B.S. candidate (’26) focusing on
+          physics‑based simulation, cascaded PID/nonlinear control, and sim‑to‑real robotics.
+          I build performant Unreal Engine plugins and integrate ROS 2, PX4/ROSFlight, and RL (SB3/PPO).
+        </p>
+        <p class="tags">
+          <span>Unreal Engine (C++)</span><span>ROS 2</span><span>PX4</span><span>Controls</span><span>RL (PPO)</span><span>Simulation</span>
+        </p>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Projects</h2>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Unreal Engine Quadcopter Simulator</h3>
+            <p>A lightweight, high‑fidelity Unreal plugin for quadrotor physics, sensors (IMU/GPS/Baro/Mag), cascaded PID, ROS 2 bridge, and PX4/ROSFlight compatibility.</p>
+            <ul class="bullets">
+              <li>Accurate physics + cascaded PID hover/waypoint control</li>
+              <li>Sensor noise models, frame conversions (FRU ↔ NED)</li>
+              <li>ROS 2 topics and PX4‑SIL/HIL interfacing</li>
+            </ul>
+            <div class="card-actions">
+              <a class="btn" href="projects/unreal-drone.html">View Case Study</a>
+              <a class="btn ghost" href="https://github.com/<your-github-username>/<your-repo>">GitHub</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Isaac Sim Physics Setup</h3>
+            <p>End‑to‑end rigid body and joint setup for stable quad spawn, mass tuning, and collision filtering to avoid initial instabilities.</p>
+            <ul class="bullets">
+              <li>Rigid bodies + revolute joints</li>
+              <li>Spawn stabilization and collision disable</li>
+              <li>Mass/inertia tuning workflow</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>ROS 2 Migration & Messaging</h3>
+            <p>Ported legacy ROS 1 nodes to ROS 2 (Humble/Jazzy), adapted custom messages (rosflight_msgs, reef_msgs), and aligned topic interfaces for the Unreal bridge.</p>
+            <ul class="bullets">
+              <li>Custom message adaptation</li>
+              <li>QoS + namespace conventions</li>
+              <li>rclUE / UE bridge integration</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>Best ways to reach me:</p>
+        <ul class="contact-list">
+          <li>Email: <a href="mailto:nicolasfnino@gmail.com">nicolasfnino@gmail.com</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/<your-linkedin>">@LinkedIn</a></li>
+          <li>GitHub: <a href="https://github.com/<your-github-username>">@<your-github-username></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      © <span id="year"></span> Nicolas Nino — All Rights Reserved
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
