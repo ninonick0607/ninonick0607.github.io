@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unreal Project — Nicolas Nino</title>
+  <meta name="description" content="Detailed write‑up of the Unreal Engine drone simulation project by Nicolas Nino." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="dot"></span> <span>Nicolas Nino</span></div>
+      <nav class="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="projects.html">Unreal Project</a>
+        <a href="media.html">Photos & Videos</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h1>Unreal Project — Full Breakdown</h1>
+      <p class="subline">A modular Unreal Engine 5 framework for quadrotor simulation, controls, and integrations.</p>
+      <div class="grid" style="margin-top:1rem">
+        <article class="card proj"><span class="pill">Dynamics</span><h3>Drone Model</h3><p>Rigid‑body physics, tuned mass/inertia, thrust/drag curves, prop response, NED alignment.</p></article>
+        <article class="card proj"><span class="pill">Controls</span><h3>Cascaded PID</h3><p>Rate → angle → velocity → position loops with anti‑windup and derivative filtering.</p></article>
+        <article class="card proj"><span class="pill">Failure Modes</span><h3>Disturbances</h3><p>Hooks for wind, dropouts, and motor loss to test controller robustness.</p></article>
+        <article class="card proj"><span class="pill">Sensors</span><h3>Noise Models</h3><p>IMU/GPS/Baro/Mag with bias, drift, and configurable covariance for estimators.</p></article>
+        <article class="card proj"><span class="pill">Integration</span><h3>PX4</h3><p>HITL/SITL bridges, MAVLink mapping, and sim‑time synchronization.</p></article>
+        <article class="card proj"><span class="pill">Middleware</span><h3>ROS 2</h3><p>Publish/subscribe for telemetry and control; launch‑friendly config.</p></article>
+        <article class="card proj"><span class="pill">I/O</span><h3>ZeroMQ</h3><p>Lightweight sockets for logging, tools, and reinforcement learning loops.</p></article>
+        <article class="card proj"><span class="pill">UI</span><h3>HUD & Tools</h3><p>Minimal overlays for state, profiling, and debugging without affecting cadence.</p></article>
+        <article class="card proj"><span class="pill">Roadmap</span><h3>Next</h3><p>Weather/wind fields, customizable HUD, expanded test harness, sim‑to‑real studies.</p></article>
+      </div>
+      <div class="cta" style="margin-top:1rem">
+        <a class="btn" href="index.html#projects-preview">Back to overview</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Nicolas Nino</div>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>
