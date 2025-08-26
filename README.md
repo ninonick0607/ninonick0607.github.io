@@ -1,33 +1,30 @@
 # Nicolas Nino — Portfolio (GitHub Pages)
 
-A clean, no‑build static site to showcase my work (with a flagship Unreal Engine quadcopter simulator).
+This is a simple, fast portfolio focused on an Unreal Engine drone simulation project. It uses a small multi‑file structure for clarity and easy maintenance.
 
-## 🚀 Quick Start
-1. Create a new public repo named `<your-github-username>.github.io`.
-2. Upload the contents of this folder to the repo root.
-3. Commit & push. GitHub Pages will auto‑publish at `https://<your-github-username>.github.io`.
-
-## 🛠 Customize
-- **Headshot**: replace the placeholder in `index.html` with an `<img src="assets/img/headshot.jpg" alt="Nicolas Nino">` and add your file.
-- **Resume**: add `Nicolas_Nino_Resume.pdf` at the repo root (or update the link).
-- **Links**: search for `<your-github-username>` and `<your-linkedin>` and replace.
-- **GitHub repo**: update the project GitHub link in both `index.html` and `projects/unreal-drone.html`.
-- **Video**: replace the YouTube embed `src` with your demo video link.
-
-## 🧭 Structure
+## Structure
 ```
-/
+.
 ├── index.html
-├── projects/
-│   └── unreal-drone.html
-├── assets/
-│   ├── css/styles.css
-│   └── js/main.js
-└── README.md
+├── resume.pdf                 # add your resume here (optional)
+├── headshot.jpg               # add your headshot here (optional)
+├── assets
+│   ├── style.css
+│   └── script.js
+└── media/                     # put photos & videos here
 ```
+Media placeholders are present in the **Photos & Videos** section; replace them with `<img>` tags or embed YouTube/Vimeo iframes.
 
-## 📄 Extra Pages
-Add more project pages under `projects/` and link them from the Projects section on the home page.
+## Deploy on GitHub Pages
+1. Create a public repo **yourusername.github.io**.
+2. Upload all files in this folder to the repo root.
+3. Add `resume.pdf` and `headshot.jpg` when ready.
+4. Push/commit; open `https://yourusername.github.io`.
 
-## 🔒 License
-You own your content. The scaffold (HTML/CSS/JS) is MIT‑licensed for convenience.
+## Customize
+- Update contact links in the **Contact** section of `index.html`.
+- Edit About and project tiles to match your exact modules (PID, ROS2, PX4, ZeroMQ, Sensors, Graphics/Maps, Gamepad, Future Work).
+- Tweak theme colors in `assets/style.css` (variables at the top).
+
+---
+© 2025 Nicolas Nino

@@ -4,131 +4,162 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nicolas Nino — Portfolio</title>
-  <meta name="description" content="Simulation Engineer portfolio — Unreal Engine drone simulation, controls, ROS 2, PX4, sim-to-real." />
+  <meta name="description" content="Portfolio of Nicolas Nino — Unreal Engine drone simulation, controls, robotics, and research." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <link rel="icon" href="data:,">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Nicolas Nino",
-    "jobTitle": "Simulation Engineer",
-    "url": "https://<your-github-username>.github.io",
-    "sameAs": ["https://github.com/<your-github-username>", "https://www.linkedin.com/in/<your-linkedin>"]
-  }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="/">NN</a>
-      <nav id="main-nav" class="nav">
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="dot"></span> <span>Nicolas Nino</span></div>
+      <nav class="nav-links">
         <a href="#about">About</a>
-        <a href="#projects">Projects</a>
+        <a href="#projects">Unreal Project</a>
+        <a href="#gallery">Photos & Videos</a>
         <a href="#contact">Contact</a>
-        <a class="btn" href="Nicolas_Nino_Resume.pdf">Resume</a>
       </nav>
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </header>
 
-  <main>
+  <main class="container">
+    <!-- HERO -->
     <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-text">
-          <h1>Hi, I’m <span class="accent">Nicolas Nino</span></h1>
-          <p class="subtitle">Simulation Engineer · Controls · Robotics — building a high‑fidelity Unreal Engine quadcopter simulator with ROS 2/PX4 and a sim‑to‑real pipeline.</p>
-          <div class="cta-row">
-            <a class="btn" href="#projects">View Projects</a>
-            <a class="btn ghost" href="projects/unreal-drone.html">Flagship: Unreal Drone Sim</a>
-          </div>
-        </div>
-        <div class="hero-photo">
-          <!-- Replace with your own headshot at /assets/img/headshot.jpg -->
-          <div class="photo-placeholder">Your Photo</div>
-        </div>
+      <div class="headshot">
+        <!-- Replace src with your headshot file, e.g., headshot.jpg placed in the repo root -->
+        <img src="headshot.jpg" alt="Headshot of Nicolas Nino" onerror="this.parentElement.innerHTML='Add headshot.jpg'"/>
       </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="container">
-        <h2>About Me</h2>
-        <p>
-          I’m an AFRL Scholars researcher and UCF Data Science B.S. candidate (’26) focusing on
-          physics‑based simulation, cascaded PID/nonlinear control, and sim‑to‑real robotics.
-          I build performant Unreal Engine plugins and integrate ROS 2, PX4/ROSFlight, and RL (SB3/PPO).
-        </p>
-        <p class="tags">
-          <span>Unreal Engine (C++)</span><span>ROS 2</span><span>PX4</span><span>Controls</span><span>RL (PPO)</span><span>Simulation</span>
-        </p>
-      </div>
-    </section>
-
-    <section id="projects" class="section">
-      <div class="container">
-        <h2>Projects</h2>
-
-        <div class="cards">
-          <article class="card">
-            <h3>Unreal Engine Quadcopter Simulator</h3>
-            <p>A lightweight, high‑fidelity Unreal plugin for quadrotor physics, sensors (IMU/GPS/Baro/Mag), cascaded PID, ROS 2 bridge, and PX4/ROSFlight compatibility.</p>
-            <ul class="bullets">
-              <li>Accurate physics + cascaded PID hover/waypoint control</li>
-              <li>Sensor noise models, frame conversions (FRU ↔ NED)</li>
-              <li>ROS 2 topics and PX4‑SIL/HIL interfacing</li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn" href="projects/unreal-drone.html">View Case Study</a>
-              <a class="btn ghost" href="https://github.com/<your-github-username>/<your-repo>">GitHub</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <h3>Isaac Sim Physics Setup</h3>
-            <p>End‑to‑end rigid body and joint setup for stable quad spawn, mass tuning, and collision filtering to avoid initial instabilities.</p>
-            <ul class="bullets">
-              <li>Rigid bodies + revolute joints</li>
-              <li>Spawn stabilization and collision disable</li>
-              <li>Mass/inertia tuning workflow</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>ROS 2 Migration & Messaging</h3>
-            <p>Ported legacy ROS 1 nodes to ROS 2 (Humble/Jazzy), adapted custom messages (rosflight_msgs, reef_msgs), and aligned topic interfaces for the Unreal bridge.</p>
-            <ul class="bullets">
-              <li>Custom message adaptation</li>
-              <li>QoS + namespace conventions</li>
-              <li>rclUE / UE bridge integration</li>
-            </ul>
-          </article>
+      <div>
+        <div class="kicker">Simulation • Controls • Robotics</div>
+        <h1 class="tagline">Building high‑fidelity drone simulations in Unreal Engine — from physics and sensors to PX4/ROS2 integration.</h1>
+        <p class="subline">Data Science @ UCF · AFRL Scholars · Focused on cascaded PID, sim‑to‑real pipelines, and robust autonomy.</p>
+        <div class="cta">
+          <!-- Replace resume.pdf with your actual file name -->
+          <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">View Résumé</a>
+          <a class="btn" href="#projects">Explore the Unreal Project</a>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section">
-      <div class="container">
-        <h2>Contact</h2>
-        <p>Best ways to reach me:</p>
-        <ul class="contact-list">
-          <li>Email: <a href="mailto:nicolasfnino@gmail.com">nicolasfnino@gmail.com</a></li>
-          <li>LinkedIn: <a href="https://www.linkedin.com/in/<your-linkedin>">@LinkedIn</a></li>
-          <li>GitHub: <a href="https://github.com/<your-github-username>">@<your-github-username></a></li>
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About</h2>
+      <div class="about">
+        <div class="card">
+          <p>
+            I’m Nicolas Nino (NN), a data scientist & simulation engineer building a physics‑accurate quadcopter environment in Unreal Engine as a lightweight alternative to legacy simulators. My work spans
+            controller design (cascaded PID & nonlinear), sensor modeling (IMU, GPS, barometer, magnetometer), PX4/ROS2 integration, and sim‑to‑real validation.
+          </p>
+          <p>
+            I care about correctness, clean interfaces, and reproducible results. Recruiters and professors can quickly scan this page to see the project broken into practical, reviewable modules.
+          </p>
+        </div>
+        <div class="card">
+          <strong>Highlights</strong>
+          <ul>
+            <li>Unreal‑native plugin architecture (Simulation Manager · Drone Manager · Time Controller)</li>
+            <li>PX4 HITL/SITL bridges; ROS2 & ZeroMQ I/O surfaces</li>
+            <li>Noise‑aware sensor models and unit‑consistent transforms (FRU ↔ NED)</li>
+            <li>Extensible UI/HUD with profiling and debugging overlays</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Unreal Project — Modular Breakdown</h2>
+      <div class="grid">
+        <article class="card proj">
+          <span class="pill">Dynamics</span>
+          <h3>Drone Model</h3>
+          <p>Rigid‑body quadcopter with tuned mass/inertia, thrust/drag models, prop response, and frame conventions aligned to NED.</p>
+        </article>
+        <article class="card proj">
+          <span class="pill">Controls</span>
+          <h3>Accurate PID Calculations</h3>
+          <p>Cascaded rate/angle/position loops with anti‑windup, derivative filtering, and consistent time‑step integration.</p>
+        </article>
+        <article class="card proj">
+          <span class="pill">Input</span>
+          <h3>Gamepad Support</h3>
+          <p>Configurable mappings and dead‑zones for manual flight; deterministic input path for repeatable testing.</p>
+        </article>
+        <article class="card proj">
+          <span class="pill">Rendering</span>
+          <h3>High‑Fidelity Graphics & Map Design</h3>
+          <p>Optimized levels and post‑processing for visibility of state, without compromising physics update cadence.</p>
+        </article>
+        <article class="card proj">
+          <span class="pill">Sensors</span>
+          <h3>Accurate Sensor Modeling</h3>
+          <p>IMU, GPS, magnetometer, barometer with bias/drift/noise; configurable rates and covariance for estimators.</p>
+        </article>
+        <article class="card proj">
+          <span class="pill">Integration</span>
+          <h3>PX4 Integration</h3>
+          <p>Bridges for HITL/SITL, MAVLink topic mapping, frame conversions, and time sync with the sim clock.</p>
+        </article>
+        <article class="card proj">
+          <span class="pill">Middleware</span>
+          <h3>ROS2 Integration</h3>
+          <p>Publish/subscribe interfaces for telemetry and control; launch‑friendly config and message schema parity.</p>
+        </article>
+        <article class="card proj">
+          <span class="pill">I/O</span>
+          <h3>ZeroMQ Integration</h3>
+          <p>Lightweight sockets for external tools, logging, and reinforcement learning loops.</p>
+        </article>
+        <article class="card proj">
+          <span class="pill">Roadmap</span>
+          <h3>Future Work</h3>
+          <p>Weather & wind dynamics, customizable HUD, expanded failure modes (motor loss), and sim‑to‑real studies.</p>
+        </article>
+      </div>
+
+      <!-- Optional: quick links row; replace # with actual repo/video links when ready -->
+      <div class="button-row">
+        <a class="btn" href="#">View Code (coming soon)</a>
+        <a class="btn" href="#gallery">Media</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+    </section>
+
+    <!-- GALLERY / MEDIA PLACEHOLDER -->
+    <section id="gallery">
+      <h2>Photos & Videos</h2>
+      <p class="subline">Add your media files to the <code>/media</code> folder and replace these placeholders with <code>&lt;img&gt;</code> or embedded videos.</p>
+      <div class="gallery">
+        <div class="ph">Add media 1</div>
+        <div class="ph">Add media 2</div>
+        <div class="ph">Add media 3</div>
+        <div class="ph">Add media 4</div>
+        <div class="ph">Add media 5</div>
+        <div class="ph">Add media 6</div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>Want to collaborate or learn more? Reach out:</p>
+        <ul>
+          <li>Email: <a href="mailto:nicolas@example.com">nicolas@example.com</a></li>
+          <li>GitHub: <a href="https://github.com/yourusername" target="_blank" rel="noopener">github.com/yourusername</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener">linkedin.com/in/yourprofile</a></li>
         </ul>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer>
     <div class="container">
-      © <span id="year"></span> Nicolas Nino — All Rights Reserved
+      <div>© <span id="y"></span> Nicolas Nino. All rights reserved.</div>
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <script src="assets/script.js"></script>
 </body>
 </html>
