@@ -3,14 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nicolas Nino — High‑Fidelity Drone Simulation & Controls</title>
-  <meta name="description" content="Portfolio of Nicolas Nino — simulation engineer focused on Unreal Engine drone physics, controls, and sim‑to‑real." />
+  <title>Nicolas Nino — High-Fidelity Drone Simulation & Controls</title>
+  <meta name="description" content="Portfolio of Nicolas Nino — simulation engineer focused on Unreal Engine drone physics, controls, and sim-to-real." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
+  <!-- Sticky nav -->
   <header class="nav">
     <div class="container nav-inner">
       <div class="brand"><span class="dot"></span> <span>Nicolas Nino</span></div>
@@ -24,115 +25,95 @@
   </header>
 
   <main class="container">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="headshot">
-        <img src="headshot.jpg" alt="Headshot of Nicolas Nino" onerror="this.parentElement.innerHTML='Add headshot.jpg'"/>
-      </div>
-      <div>
-        <div class="kicker">Simulation • Controls • Robotics</div>
-        <h1 class="tagline">Nicolas Nino — Building high‑fidelity drone simulations in Unreal Engine, from physics and sensors to PX4/ROS2 integration.</h1>
-        <p class="subline">Data Science @ UCF · AFRL Scholars · Cascaded PID, nonlinear control, and sim‑to‑real pipelines.</p>
-        <div class="cta">
-          <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">View Résumé</a>
-          <a class="btn" href="projects.html">Explore the Unreal Project</a>
-        </div>
-      </div>
-    </section>
-
     <!-- ABOUT -->
     <section id="about">
       <h2>About</h2>
       <div class="about">
         <div class="card">
           <p>
-            I’m Nicolas Nino (NN), a simulation engineer focused on accurate quadrotor dynamics, robust controllers, and reproducible pipelines. I build in Unreal Engine 5 with C++ and ROS 2, and I care about clean interfaces, unit consistency, and alignment between sim and real‑world behavior.
+            I’m Nicolas Nino (NN), a simulation engineer focused on accurate quadrotor dynamics,
+            robust controllers, and reproducible pipelines. I build in Unreal Engine 5 with C++ and ROS 2,
+            and I care about clean interfaces, unit consistency, and alignment between sim and real-world behavior.
           </p>
           <p>
-            Recent work includes re‑architecting a full UE5 drone sim with cascaded PID and UI tooling, training PPO agents for navigation tasks, and wiring ROS 2/ZeroMQ bridges for telemetry and control.
+            Recent work includes re-architecting a full UE5 drone sim with cascaded PID and UI tooling,
+            training PPO agents for navigation tasks, and wiring ROS 2/ZeroMQ bridges for telemetry and control.
           </p>
         </div>
-        <div class="card">
-          <strong>Highlights</strong>
-          <ul>
-            <li>UE5 plugin architecture (Simulation Manager · Drone Manager · Time Controller)</li>
-            <li>PX4 HITL/SITL bridges; ROS 2 & ZeroMQ I/O surfaces</li>
-            <li>Noise‑aware IMU/GPS/Baro/Mag models with FRU↔NED transforms</li>
-            <li>Profiling overlays and reproducible test harnesses</li>
+        <div class="card headshot-card">
+          <div class="headshot">
+            <img src="headshot.jpg" alt="Headshot of Nicolas Nino"
+                 onerror="this.parentElement.innerHTML='Add headshot.jpg'"/>
+          </div>
+          <p class="subline" style="margin-top:.6rem">Drop your headshot in the root as <code>headshot.jpg</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL COMPETENCIES (first, per your request) -->
+    <section id="competencies">
+      <h2>Technical Competencies</h2>
+
+      <div class="badges card" style="margin-bottom:1rem">
+        <span class="badge">Unreal Engine 5</span>
+        <span class="badge">ROS 2</span>
+        <span class="badge">PX4</span>
+        <span class="badge">ZeroMQ</span>
+        <span class="badge">HITL/SITL</span>
+        <span class="badge">PPO · SB3 · Gym</span>
+      </div>
+
+      <div class="competency-grid">
+        <div class="comp card">
+          <h3>Programming</h3>
+          <ul class="even-list">
+            <li>C, C++, C#</li>
+            <li>Python, Java, R</li>
+            <li>Matlab, Rust</li>
+          </ul>
+        </div>
+        <div class="comp card">
+          <h3>Simulation & Modeling</h3>
+          <ul class="even-list">
+            <li>Unreal Engine · Blueprints</li>
+            <li>Isaac Sim · Gazebo · Webots</li>
+            <li>Simulink · Blender</li>
+          </ul>
+        </div>
+        <div class="comp card">
+          <h3>Controls & ML</h3>
+          <ul class="even-list">
+            <li>Cascaded PID · Nonlinear</li>
+            <li>PPO (Stable-Baselines3)</li>
+            <li>Estimator-ready covariances</li>
+          </ul>
+        </div>
+        <div class="comp card">
+          <h3>Systems & I/O</h3>
+          <ul class="even-list">
+            <li>ROS 1/2 · PX4 · ArduPilot</li>
+            <li>ZeroMQ · Real-time loops</li>
+            <li>HITL/SITL test harnesses</li>
           </ul>
         </div>
       </div>
     </section>
+  </main>
 
-    <!-- TECHNICAL COMPETENCIES -->
-    <section id="competencies">
-      <h2>Technical Competencies</h2>
-      <div class="card">
-        <div class="badges">
-          <span class="badge">Unreal Engine 5</span>
-          <span class="badge">ROS 2</span>
-          <span class="badge">PX4</span>
-          <span class="badge">ZeroMQ</span>
-          <span class="badge">HITL/SITL</span>
-          <span class="badge">PPO · SB3 · Gym</span>
-        </div>
-        <div style="margin-top:.8rem; display:grid; grid-template-columns: 1fr 1fr; gap:1rem">
-          <div>
-            <strong>Programming</strong>
-            <ul class="list-compact">
-              <li>C, C++, C#</li>
-              <li>Python, Java, R, Rust</li>
-              <li>Matlab, Assembly</li>
-            </ul>
-          </div>
-          <div>
-            <strong>Simulation & Modeling</strong>
-            <ul class="list-compact">
-              <li>Unreal Engine · UE Blueprints</li>
-              <li>Isaac Sim, Gazebo, Webots, Simulink</li>
-              <li>Blender</li>
-            </ul>
-          </div>
-          <div>
-            <strong>Controls & ML</strong>
-            <ul class="list-compact">
-              <li>PID (rate/angle/vel/pos), nonlinear & geometric control</li>
-              <li>PPO (Stable‑Baselines3)</li>
-              <li>Estimator‑friendly sensor covariances</li>
-            </ul>
-          </div>
-          <div>
-            <strong>Systems</strong>
-            <ul class="list-compact">
-              <li>ROS 1 & 2, PX4, ArduPilot</li>
-              <li>ZeroMQ, real‑time systems</li>
-              <li>HITL/SITL test pipelines</li>
-            </ul>
-          </div>
-        </div>
-        <p class="subline" style="margin-top:.8rem">Details summarized from my current resume.</p>
+  <!-- UNREAL PROJECT — full-bleed band, whole image (no crop), no parallax -->
+  <section class="immersive">
+    <!-- Real <img> to avoid cropping -->
+    <img class="immersive-img" src="assets/img/unreal-hero.jpg" alt="Unreal Engine drone simulation scene">
+    <div class="immersive__overlay">
+      <div class="immersive__text">
+        <div class="kicker">Unreal Engine • Quadrotor • Sim-to-Real</div>
+        <h1 class="tagline">High-fidelity drone simulation — physics, sensors, PX4/ROS 2.</h1>
+        <a class="btn primary immersive__cta" href="projects.html">Explore the Project</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- PROJECT PREVIEW ON HOME -->
-    <section id="projects-preview">
-      <h2>Unreal Project — Modular Overview</h2>
-      <div class="grid">
-        <article class="card proj"><span class="pill">Dynamics</span><h3>Drone Model</h3><p>Rigid‑body quad with tuned mass/inertia, thrust/drag, and prop response.</p></article>
-        <article class="card proj"><span class="pill">Controls</span><h3>Accurate PID Calculations</h3><p>Cascaded loops, anti‑windup, derivative filtering, Δt‑aware integration.</p></article>
-        <article class="card proj"><span class="pill">Input</span><h3>Gamepad Support</h3><p>Configurable mappings, deterministic input for repeatable tests.</p></article>
-        <article class="card proj"><span class="pill">Rendering</span><h3>Graphics & Map Design</h3><p>Readable scenes and stable frame pacing for physics fidelity.</p></article>
-        <article class="card proj"><span class="pill">Sensors</span><h3>Sensor Modeling</h3><p>IMU, GPS, magnetometer, barometer with bias/drift/noise.</p></article>
-        <article class="card proj"><span class="pill">Integration</span><h3>PX4 Integration</h3><p>HITL/SITL bridges, MAVLink mapping, time sync.</p></article>
-        <article class="card proj"><span class="pill">Middleware</span><h3>ROS 2 Integration</h3><p>Pub/sub interfaces and launch‑friendly configs.</p></article>
-        <article class="card proj"><span class="pill">I/O</span><h3>ZeroMQ</h3><p>Lightweight sockets for tools, logging, and RL loops.</p></article>
-        <article class="card proj"><span class="pill">Roadmap</span><h3>Future Work</h3><p>Weather & wind, customizable HUD, failure modes, sim‑to‑real.</p></article>
-      </div>
-      <div class="cta" style="margin-top:1rem">
-        <a class="btn" href="projects.html">See full project page</a>
-      </div>
-    </section>
-
+  <main class="container">
     <!-- CONTACT -->
     <section id="contact">
       <h2>Contact</h2>
