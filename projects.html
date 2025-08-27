@@ -3,19 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Unreal Project — Nicolas Nino</title>
-  <meta name="description" content="Detailed write‑up of the Unreal Engine drone simulation project by Nicolas Nino." />
+  <title>Unreal Drone Project — Nicolas Nino</title>
+  <meta name="description" content="Deep dive into Nicolas Nino’s high-fidelity Unreal drone simulation: PX4, ROS 2, sensors, dynamics, UI, and extensible architecture." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
+  <!-- Sticky nav -->
   <header class="nav">
     <div class="container nav-inner">
       <div class="brand"><span class="dot"></span> <span>Nicolas Nino</span></div>
       <nav class="nav-links">
         <a href="index.html#about">About</a>
+        <a href="index.html#competencies">Technical</a>
         <a href="projects.html">Unreal Project</a>
         <a href="media.html">Photos & Videos</a>
         <a href="index.html#contact">Contact</a>
@@ -23,23 +25,152 @@
     </div>
   </header>
 
+  <!-- Page intro -->
   <main class="container">
-    <section>
-      <h1>Unreal Project — Full Breakdown</h1>
-      <p class="subline">A modular Unreal Engine 5 framework for quadrotor simulation, controls, and integrations.</p>
-      <div class="grid" style="margin-top:1rem">
-        <article class="card proj"><span class="pill">Dynamics</span><h3>Drone Model</h3><p>Rigid‑body physics, tuned mass/inertia, thrust/drag curves, prop response, NED alignment.</p></article>
-        <article class="card proj"><span class="pill">Controls</span><h3>Cascaded PID</h3><p>Rate → angle → velocity → position loops with anti‑windup and derivative filtering.</p></article>
-        <article class="card proj"><span class="pill">Failure Modes</span><h3>Disturbances</h3><p>Hooks for wind, dropouts, and motor loss to test controller robustness.</p></article>
-        <article class="card proj"><span class="pill">Sensors</span><h3>Noise Models</h3><p>IMU/GPS/Baro/Mag with bias, drift, and configurable covariance for estimators.</p></article>
-        <article class="card proj"><span class="pill">Integration</span><h3>PX4</h3><p>HITL/SITL bridges, MAVLink mapping, and sim‑time synchronization.</p></article>
-        <article class="card proj"><span class="pill">Middleware</span><h3>ROS 2</h3><p>Publish/subscribe for telemetry and control; launch‑friendly config.</p></article>
-        <article class="card proj"><span class="pill">I/O</span><h3>ZeroMQ</h3><p>Lightweight sockets for logging, tools, and reinforcement learning loops.</p></article>
-        <article class="card proj"><span class="pill">UI</span><h3>HUD & Tools</h3><p>Minimal overlays for state, profiling, and debugging without affecting cadence.</p></article>
-        <article class="card proj"><span class="pill">Roadmap</span><h3>Next</h3><p>Weather/wind fields, customizable HUD, expanded test harness, sim‑to‑real studies.</p></article>
+    <section class="page-intro">
+      <h1>Unreal Drone Simulation — Deep Dive</h1>
+      <p class="subline">
+        A modular simulation focused on accurate flight dynamics, realistic sensors, and clean interfaces.
+        This page highlights the core pillars with short explanations and visual evidence.
+      </p>
+    </section>
+  </main>
+
+  <!-- ===== Feature 1: PX4 + ROS 2 Integration ===== -->
+  <section class="feature-hero">
+    <!-- Put a wide screenshot/diagram here -->
+    <!-- Example image path: assets/img/px4-ros-hero.jpg -->
+    <img class="feature-hero__media" src="assets/img/px4-ros-hero.jpg" alt="PX4 and ROS 2 integration diagram" onerror="this.style.display='none'">
+  </section>
+
+  <main class="container">
+    <section class="feature">
+      <div class="feature__media">
+        <!-- Short clip or static diagram -->
+        <!-- If you have a video: replace <img> with <video class="feature__video" controls src="assets/img/px4-ros-demo.mp4"></video> -->
+        <img class="feature__image" src="assets/img/px4-ros-blocks.jpg" alt="PX4 and ROS 2 message flow" onerror="this.style.display='none'">
       </div>
-      <div class="cta" style="margin-top:1rem">
-        <a class="btn" href="index.html#projects-preview">Back to overview</a>
+      <div class="feature__text">
+        <h2>PX4 + ROS 2 Integration</h2>
+        <p>
+          Clean bridges for telemetry and control with robust update timing. I maintain strict unit and frame
+          conventions (UE cm ↔ SI meters; FRU vs NED) and use structured topics/services for clarity.
+        </p>
+        <ul class="feature__bullets">
+          <li>HITL/SITL tested pathways for command + state feedback.</li>
+          <li>Thread-safe data mirroring; no UObjects accessed off game thread.</li>
+        </ul>
+        <div class="cta">
+          <a class="btn" href="media.html">See a short PX4/ROS 2 demo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Feature 2: Accurate Flight Dynamics ===== -->
+  <section class="feature-hero">
+    <img class="feature-hero__media" src="assets/img/dynamics-hero.jpg" alt="Unreal flight dynamics visual" onerror="this.style.display='none'">
+  </section>
+
+  <main class="container">
+    <section class="feature alt">
+      <div class="feature__media">
+        <img class="feature__image" src="assets/img/dynamics-graph.jpg" alt="Thrust/drag tuning and stability charts" onerror="this.style.display='none'">
+      </div>
+      <div class="feature__text">
+        <h2>Accurate Flight Dynamics</h2>
+        <p>
+          Cascaded PID with validated thrust/drag models and sane defaults. Careful unit conversions, inertia setup,
+          and spawn stability logic minimize oscillations and make behavior repeatable.
+        </p>
+        <ul class="feature__bullets">
+          <li>Consistent SI conversions, moment arms, and motor response curves.</li>
+          <li>Deterministic initialization with robust recovery from transients.</li>
+        </ul>
+        <div class="cta">
+          <a class="btn" href="media.html">Watch a stability test</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Feature 3: Sensor Suite & Fusion ===== -->
+  <section class="feature-hero">
+    <img class="feature-hero__media" src="assets/img/sensors-hero.jpg" alt="Sensor overlays and fusion view" onerror="this.style.display='none'">
+  </section>
+
+  <main class="container">
+    <section class="feature">
+      <div class="feature__media">
+        <img class="feature__image" src="assets/img/sensors-overlay.jpg" alt="IMU, GPS, barometer, and magnetometer overlay" onerror="this.style.display='none'">
+      </div>
+      <div class="feature__text">
+        <h2>Sensor Suite & Fusion</h2>
+        <p>
+          IMU, GPS, barometer, and magnetometer signals with tunable noise models and estimator-ready covariances.
+          Outputs align with real-world magnitudes and directions for downstream filters.
+        </p>
+        <ul class="feature__bullets">
+          <li>Noise models calibrated to expected real-world variance.</li>
+          <li>Time-aligned streams for EKF/UKF pipelines.</li>
+        </ul>
+        <div class="cta">
+          <a class="btn" href="media.html">Sensor fusion clip</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Feature 4: Gamepad + UI ===== -->
+  <section class="feature-hero">
+    <img class="feature-hero__media" src="assets/img/gamepad-hero.jpg" alt="Gamepad mapping and HUD" onerror="this.style.display='none'">
+  </section>
+
+  <main class="container">
+    <section class="feature alt">
+      <div class="feature__media">
+        <img class="feature__image" src="assets/img/hud-controls.jpg" alt="HUD elements and controller mapping" onerror="this.style.display='none'">
+      </div>
+      <div class="feature__text">
+        <h2>Gamepad + UI</h2>
+        <p>
+          Controller mappings for manual flight, with a focused HUD for state, mode, and warnings. Designed to be readable
+          and minimal so you can test quickly without clutter.
+        </p>
+        <ul class="feature__bullets">
+          <li>Flexible input curves and rate limits.</li>
+          <li>Lightweight HUD with performance-friendly rendering.</li>
+        </ul>
+        <div class="cta">
+          <a class="btn" href="media.html">Controller pass demo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Feature 5: Extensible Architecture / Future Work ===== -->
+  <section class="feature-hero">
+    <img class="feature-hero__media" src="assets/img/framework-hero.jpg" alt="Extensible framework diagram" onerror="this.style.display='none'">
+  </section>
+
+  <main class="container">
+    <section class="feature">
+      <div class="feature__media">
+        <img class="feature__image" src="assets/img/framework-blocks.jpg" alt="Managers and components architecture" onerror="this.style.display='none'">
+      </div>
+      <div class="feature__text">
+        <h2>Extensible Framework & Future Work</h2>
+        <p>
+          Modular managers (Simulation, Drone, Time) with clear responsibilities, making it easy to add weather fields,
+          alternate controllers, or RL training loops without breaking core APIs.
+        </p>
+        <ul class="feature__bullets">
+          <li>Planned: wind/atmospherics, richer HUD, expanded benchmarking.</li>
+          <li>Planned: RL training harnesses and sim-to-real validation suites.</li>
+        </ul>
+        <div class="cta">
+          <a class="btn" href="media.html">Roadmap visuals</a>
+        </div>
       </div>
     </section>
   </main>
@@ -47,6 +178,7 @@
   <footer>
     <div class="container">© <span id="y"></span> Nicolas Nino</div>
   </footer>
+
   <script src="assets/script.js"></script>
 </body>
 </html>

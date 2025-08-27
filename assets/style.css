@@ -49,6 +49,7 @@ section h1, section h2{letter-spacing:.3px;margin:0 0 1rem}
 section h1{font-size:clamp(1.6rem,1.4rem + 1.4vw,2.4rem)}
 section h2{font-size:1.6rem}
 
+/* Headshot & common components */
 .hero{padding:5rem 0 3rem;display:grid;grid-template-columns:160px 1fr;gap:2rem;align-items:center}
 .headshot{width:160px;height:160px;border-radius:50%;background:linear-gradient(180deg,#151b1e,#0e1113);border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow);overflow:hidden;display:grid;place-items:center}
 .headshot img{width:100%;height:100%;object-fit:cover;display:block}
@@ -56,7 +57,7 @@ section h2{font-size:1.6rem}
 .tagline{font-weight:900;line-height:1.2}
 
 .subline{color:var(--muted);margin-top:.6rem}
-.cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.3rem}
+.cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.0rem}
 .btn{
   display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1rem;border-radius:12px;
   border:1px solid rgba(255,255,255,.09);background:linear-gradient(180deg,var(--card),var(--card-2));
@@ -119,7 +120,7 @@ footer{
   height:auto;            /* preserves full image; no cropping */
   max-height: 86vh;       /* keeps it “wider than tall”; adjust if you want taller */
   margin:0 auto;
-  object-fit: contain;    /* explicit: do not crop */
+  object-fit: contain;    /* do not crop */
   background:#0e1113;     /* fills any letterbox bands on tall screens */
 }
 .immersive__overlay{
@@ -144,16 +145,70 @@ footer{
   pointer-events:auto; /* make the button clickable */
 }
 
-/* === Uniform, symmetrical competencies === */
-.competency-grid{
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:1rem;
-}
-@media (max-width:980px){ .competency-grid{ grid-template-columns:repeat(2, 1fr);} }
-@media (max-width:600px){ .competency-grid{ grid-template-columns:1fr;} }
+/* === Projects Page: Feature Heroes & Alternating Sections === */
+.page-intro{ padding-top: 2.2rem; }
 
-.comp h3{
+.feature-hero{
+  padding:0;
+  margin: 0;
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  background: #0e1113;
+}
+.feature-hero__media{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height: 72vh;      /* wide cinematic band */
+  object-fit: contain;   /* show entire image (no cropping) */
+  background:#0e1113;
+}
+
+/* Alternating feature rows */
+.feature{
+  display:grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap:1.5rem;
+  align-items:center;
+  padding:2.4rem 0 2.8rem 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.feature.alt{ grid-template-columns: 1fr 1.1fr; }
+.feature.alt .feature__media{ order:2; }
+.feature.alt .feature__text{ order:1; }
+
+.feature__media{
+  background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));
+  border:1px solid rgba(255,255,255,.08);
+  border-radius: var(--radius);
+  padding:.6rem;
+  box-shadow: var(--shadow);
+}
+.feature__image{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius: calc(var(--radius) - 6px);
+  object-fit: contain; /* no cropping */
+  background:#0e1113;
+}
+.feature__video{
+  width:100%;
+  height:auto;
+  display:block;
+  border:none;
+  border-radius: calc(var(--radius) - 6px);
+  background:#0e1113;
+}
+
+.feature__text{
+  background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));
+  border:1px solid rgba(255,255,255,.08);
+  border-radius: var(--radius);
+  padding:1.2rem 1.2rem;
+  box-shadow: var(--shadow);
+}
+.feature__text h2{
   margin:.1rem 0 .4rem;
   letter-spacing:.2px;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
@@ -161,15 +216,69 @@ footer{
   background-clip:text;
   color:transparent;
 }
-.even-list{
+.feature__bullets{
+  margin:.6rem 0 0 1rem;
+}
+.feature__bullets li{ color:var(--muted); margin:.15rem 0; }
+
+@media (max-width: 980px){
+  .feature, .feature.alt{
+    grid-template-columns: 1fr;
+  }
+  .feature.alt .feature__media{ order:1; }
+  .feature.alt .feature__text{ order:2; }
+  .feature-hero__media{ max-height: 56vh; }
+}
+
+/* === Technical Competencies: CARD GRID (restored) === */
+.comp-cards{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:1rem;
+}
+@media (max-width:980px){ .comp-cards{ grid-template-columns:repeat(2, 1fr);} }
+@media (max-width:600px){ .comp-cards{ grid-template-columns:1fr;} }
+
+.comp-card{
+  display:flex;
+  flex-direction:column;
+  background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+  border:1px solid rgba(255,255,255,.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding:0;             /* header has its own padding */
+  min-height:190px;      /* equal-ish heights */
+}
+
+.comp-card__head{
+  padding:0.9rem 1rem;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(90deg, rgba(164,208,201,.10), rgba(224,201,140,.08));
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+.comp-card__head h3{
+  margin:.1rem 0 0;
+  letter-spacing:.2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  font-size:1.05rem;
+}
+
+.comp-card__list{
   list-style:none;
   margin:0;
-  padding:0;
+  padding:0.9rem 1rem 1rem 1rem;
   display:grid;
-  grid-auto-rows:minmax(0,1fr);
-  gap:.25rem;
+  gap:.35rem;
 }
-.even-list li{ color:var(--muted) }
+.comp-card__list li{ color:var(--muted); }
 
-/* Headshot card layout */
+/* Optional hover lift */
+.comp-card:hover{ transform:translateY(-1px); transition:transform .15s ease; }
+
+/* If any old competency styles linger, neutralize them */
+.competency-grid, .even-list{ all:unset; }
 .headshot-card{ display:grid; place-items:center; text-align:center }

@@ -17,6 +17,7 @@
       <div class="brand"><span class="dot"></span> <span>Nicolas Nino</span></div>
       <nav class="nav-links">
         <a href="#about">About</a>
+        <a href="#competencies">Technical</a>
         <a href="projects.html">Unreal Project</a>
         <a href="media.html">Photos & Videos</a>
         <a href="#contact">Contact</a>
@@ -50,7 +51,7 @@
       </div>
     </section>
 
-    <!-- TECHNICAL COMPETENCIES (first, per your request) -->
+    <!-- TECHNICAL COMPETENCIES (CARD GRID) -->
     <section id="competencies">
       <h2>Technical Competencies</h2>
 
@@ -63,46 +64,50 @@
         <span class="badge">PPO · SB3 · Gym</span>
       </div>
 
-      <div class="competency-grid">
-        <div class="comp card">
-          <h3>Programming</h3>
-          <ul class="even-list">
+      <div class="comp-cards">
+        <article class="comp-card">
+          <header class="comp-card__head"><h3>Programming</h3></header>
+          <ul class="comp-card__list">
             <li>C, C++, C#</li>
             <li>Python, Java, R</li>
             <li>Matlab, Rust</li>
           </ul>
-        </div>
-        <div class="comp card">
-          <h3>Simulation & Modeling</h3>
-          <ul class="even-list">
+        </article>
+
+        <article class="comp-card">
+          <header class="comp-card__head"><h3>Simulation & Modeling</h3></header>
+          <ul class="comp-card__list">
             <li>Unreal Engine · Blueprints</li>
             <li>Isaac Sim · Gazebo · Webots</li>
             <li>Simulink · Blender</li>
           </ul>
-        </div>
-        <div class="comp card">
-          <h3>Controls & ML</h3>
-          <ul class="even-list">
+        </article>
+
+        <article class="comp-card">
+          <header class="comp-card__head"><h3>Controls & ML</h3></header>
+          <ul class="comp-card__list">
             <li>Cascaded PID · Nonlinear</li>
             <li>PPO (Stable-Baselines3)</li>
             <li>Estimator-ready covariances</li>
           </ul>
-        </div>
-        <div class="comp card">
-          <h3>Systems & I/O</h3>
-          <ul class="even-list">
+        </article>
+
+        <article class="comp-card">
+          <header class="comp-card__head"><h3>Systems & I/O</h3></header>
+          <ul class="comp-card__list">
             <li>ROS 1/2 · PX4 · ArduPilot</li>
             <li>ZeroMQ · Real-time loops</li>
             <li>HITL/SITL test harnesses</li>
           </ul>
-        </div>
+        </article>
       </div>
+
+      <p class="subline" style="margin-top:.8rem">Four balanced cards, each with exactly three bullets for symmetry.</p>
     </section>
   </main>
 
-  <!-- UNREAL PROJECT — full-bleed band, whole image (no crop), no parallax -->
+  <!-- UNREAL project band (full-bleed, no parallax) -->
   <section class="immersive">
-    <!-- Real <img> to avoid cropping -->
     <img class="immersive-img" src="assets/img/unreal-hero.jpg" alt="Unreal Engine drone simulation scene">
     <div class="immersive__overlay">
       <div class="immersive__text">
