@@ -36,59 +36,58 @@
     </section>
   </main>
 
-  <!-- ===== Feature 1: PX4 + ROS 2 Integration ===== -->
+  <!-- ===== Feature 1: Python, ROS 2, and RViz ===== -->
   <section class="feature-hero">
     <!-- Put a wide screenshot/diagram here -->
     <!-- Example image path: assets/img/px4-ros-hero.jpg -->
-    <img class="feature-hero__media" src="assets/img/px4-ros-hero.jpg" alt="PX4 and ROS 2 integration diagram" onerror="this.style.display='none'">
+    <img class="feature-hero__media" src="assets/img/px4-ros-hero.jpg" alt="Python nodes driving ROS 2 topics with RViz visualization" onerror="this.style.display='none'">
   </section>
 
   <main class="container">
     <section class="feature">
       <div class="feature__media">
-        <!-- Short clip or static diagram -->
-        <!-- If you have a video: replace <img> with <video class="feature__video" controls src="assets/img/px4-ros-demo.mp4"></video> -->
-        <img class="feature__image" src="assets/img/px4-ros-blocks.jpg" alt="PX4 and ROS 2 message flow" onerror="this.style.display='none'">
+        <!-- Cover image next to section; video placeholder lives on clip page -->
+        <img class="feature__image" src="assets/img/px4-ros-blocks.jpg" alt="Python ROS 2 nodes and RViz view" onerror="this.style.display='none'">
       </div>
       <div class="feature__text">
-        <h2>PX4 + ROS 2 Integration</h2>
+        <h2>Python, ROS 2, and RViz</h2>
         <p>
-          Clean bridges for telemetry and control with robust update timing. I maintain strict unit and frame
-          conventions (UE cm ↔ SI meters; FRU vs NED) and use structured topics/services for clarity.
+          Python nodes publish/subscribe ROS 2 topics for telemetry and control while RViz visualizes frames,
+          TF, and sensor streams. Clean message contracts keep Unreal↔ROS 2 data aligned and debuggable.
         </p>
         <ul class="feature__bullets">
-          <li>HITL/SITL tested pathways for command + state feedback.</li>
-          <li>Thread-safe data mirroring; no UObjects accessed off game thread.</li>
+          <li>Structured topics/services and TF consistency.</li>
+          <li>Thread-safe mirroring between engine and middleware.</li>
         </ul>
         <div class="cta">
-          <a class="btn" href="media.html">See a short PX4/ROS 2 demo</a>
+          <a class="btn" href="clips/python-ros2-rviz.html">See the clip</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ===== Feature 2: Accurate Flight Dynamics ===== -->
+  <!-- ===== Feature 2: Gamemode Selection with Accurate Mechanics ===== -->
   <section class="feature-hero">
-    <img class="feature-hero__media" src="assets/img/dynamics-hero.jpg" alt="Unreal flight dynamics visual" onerror="this.style.display='none'">
+    <img class="feature-hero__media" src="assets/img/dynamics-hero.jpg" alt="Gamemode selection and flight mechanics" onerror="this.style.display='none'">
   </section>
 
   <main class="container">
     <section class="feature alt">
       <div class="feature__media">
-        <img class="feature__image" src="assets/img/dynamics-graph.jpg" alt="Thrust/drag tuning and stability charts" onerror="this.style.display='none'">
+        <img class="feature__image" src="assets/img/dynamics-graph.jpg" alt="Mode logic, thrust/drag tuning, stability charts" onerror="this.style.display='none'">
       </div>
       <div class="feature__text">
-        <h2>Accurate Flight Dynamics</h2>
+        <h2>Gamemode Selection with Accurate Mechanics</h2>
         <p>
-          Cascaded PID with validated thrust/drag models and sane defaults. Careful unit conversions, inertia setup,
-          and spawn stability logic minimize oscillations and make behavior repeatable.
+          Multiple game modes (manual, assisted, autonomous) share a core of accurate dynamics: cascaded PID,
+          validated thrust/drag, consistent units/frames, and deterministic initialization for repeatable tests.
         </p>
         <ul class="feature__bullets">
-          <li>Consistent SI conversions, moment arms, and motor response curves.</li>
-          <li>Deterministic initialization with robust recovery from transients.</li>
+          <li>Consistent SI conversions and motor response curves.</li>
+          <li>Deterministic startup; stable transitions across modes.</li>
         </ul>
         <div class="cta">
-          <a class="btn" href="media.html">Watch a stability test</a>
+          <a class="btn" href="clips/gamemode-selection.html">See the clip</a>
         </div>
       </div>
     </section>
@@ -115,42 +114,42 @@
           <li>Time-aligned streams for EKF/UKF pipelines.</li>
         </ul>
         <div class="cta">
-          <a class="btn" href="media.html">Sensor fusion clip</a>
+          <a class="btn" href="clips/sensor-suite-fusion.html">See the clip</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ===== Feature 4: Gamepad + UI ===== -->
+  <!-- ===== Feature 4: Sim World Manipulation ===== -->
   <section class="feature-hero">
-    <img class="feature-hero__media" src="assets/img/gamepad-hero.jpg" alt="Gamepad mapping and HUD" onerror="this.style.display='none'">
+    <img class="feature-hero__media" src="assets/img/gamepad-hero.jpg" alt="Sim world controls and tooling" onerror="this.style.display='none'">
   </section>
 
   <main class="container">
     <section class="feature alt">
       <div class="feature__media">
-        <img class="feature__image" src="assets/img/hud-controls.jpg" alt="HUD elements and controller mapping" onerror="this.style.display='none'">
+        <img class="feature__image" src="assets/img/hud-controls.jpg" alt="World editing, weather toggles, and utilities" onerror="this.style.display='none'">
       </div>
       <div class="feature__text">
-        <h2>Gamepad + UI</h2>
+        <h2>Sim World Manipulation</h2>
         <p>
-          Controller mappings for manual flight, with a focused HUD for state, mode, and warnings. Designed to be readable
-          and minimal so you can test quickly without clutter.
+          Tools to manipulate the simulated world: spawn/transform assets, adjust lighting and atmospherics, and
+          script scenarios for repeatable tests. Lightweight HUD elements expose controls without clutter.
         </p>
         <ul class="feature__bullets">
-          <li>Flexible input curves and rate limits.</li>
-          <li>Lightweight HUD with performance-friendly rendering.</li>
+          <li>Scenario scripting and quick world edits.</li>
+          <li>Performance-friendly UI for rapid iteration.</li>
         </ul>
         <div class="cta">
-          <a class="btn" href="media.html">Controller pass demo</a>
+          <a class="btn" href="clips/sim-world-manipulation.html">See the clip</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ===== Feature 5: Extensible Architecture / Future Work ===== -->
+  <!-- ===== Feature 5: WIP and In the Future ===== -->
   <section class="feature-hero">
-    <img class="feature-hero__media" src="assets/img/framework-hero.jpg" alt="Extensible framework diagram" onerror="this.style.display='none'">
+    <img class="feature-hero__media" src="assets/img/framework-hero.jpg" alt="Roadmap and WIP features" onerror="this.style.display='none'">
   </section>
 
   <main class="container">
@@ -159,17 +158,17 @@
         <img class="feature__image" src="assets/img/framework-blocks.jpg" alt="Managers and components architecture" onerror="this.style.display='none'">
       </div>
       <div class="feature__text">
-        <h2>Extensible Framework & Future Work</h2>
+        <h2>WIP and In the Future</h2>
         <p>
-          Modular managers (Simulation, Drone, Time) with clear responsibilities, making it easy to add weather fields,
-          alternate controllers, or RL training loops without breaking core APIs.
+          Work in progress and roadmap items across tooling, controls, and evaluation: wind/atmospherics, richer HUD,
+          RL training harnesses, and broader benchmarking — all on top of a modular manager architecture.
         </p>
         <ul class="feature__bullets">
           <li>Planned: wind/atmospherics, richer HUD, expanded benchmarking.</li>
           <li>Planned: RL training harnesses and sim-to-real validation suites.</li>
         </ul>
         <div class="cta">
-          <a class="btn" href="media.html">Roadmap visuals</a>
+          <a class="btn" href="clips/wip-future.html">See the clip</a>
         </div>
       </div>
     </section>
