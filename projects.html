@@ -17,9 +17,9 @@
       <div class="brand"><span class="dot"></span> <span>Nicolas Nino</span></div>
       <nav class="nav-links">
         <a href="index.html#about">About</a>
-        <a href="index.html#competencies">Technical</a>
         <a href="projects.html">Unreal Project</a>
         <a href="media.html">Photos & Videos</a>
+        <a href="resume.html">Resume</a>
         <a href="index.html#contact">Contact</a>
       </nav>
     </div>
@@ -46,8 +46,20 @@
   <main class="container">
     <section class="feature">
       <div class="feature__media">
-        <!-- Cover image next to section; video placeholder lives on clip page -->
-        <img class="feature__image" src="assets/img/px4-ros-blocks.jpg" alt="Python ROS 2 nodes and RViz view" onerror="this.style.display='none'">
+        <div class="slider slider--video" aria-label="ROS 2 and RViz media carousel">
+          <div class="slider__viewport">
+            <div class="slider__track">
+              <div class="slider__slide">
+                <iframe class="feature__video" src="https://www.youtube.com/embed/r3Lv_NHnohc" title="Python, ROS 2, and RViz" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+              <div class="slider__slide">
+                <iframe class="feature__video" src="https://www.youtube.com/embed/OPRhFV7G6LY" title="ROS 2 / RViz alternate view" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+          <button class="slider__btn slider__btn--prev" aria-label="Previous">&#10094;</button>
+          <button class="slider__btn slider__btn--next" aria-label="Next">&#10095;</button>
+        </div>
       </div>
       <div class="feature__text">
         <h2>Python, ROS 2, and RViz</h2>
@@ -58,10 +70,10 @@
         <ul class="feature__bullets">
           <li>Structured topics/services and TF consistency.</li>
           <li>Thread-safe mirroring between engine and middleware.</li>
+          <li>In the clip, RViz visualizes TF frames, topic overlays, and markers for fast alignment/debug.</li>
+          <li>ROS 2 + DDS real-to-sim TeleOp — see the second clip.</li>
         </ul>
-        <div class="cta">
-          <a class="btn" href="clips/python-ros2-rviz.html">See the clip</a>
-        </div>
+        
       </div>
     </section>
   </main>
@@ -75,20 +87,19 @@
     <section class="feature alt">
       <div class="feature__media">
         <img class="feature__image" src="assets/img/dynamics-graph.jpg" alt="Mode logic, thrust/drag tuning, stability charts" onerror="this.style.display='none'">
+        <iframe class="feature__video" src="https://www.youtube.com/embed/WqrMnsxLJ0M" title="Gamemode Selection and Mechanics" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
       <div class="feature__text">
-        <h2>Gamemode Selection with Accurate Mechanics</h2>
+        <h2>Gamemode Selection</h2>
         <p>
-          Multiple game modes (manual, assisted, autonomous) share a core of accurate dynamics: cascaded PID,
-          validated thrust/drag, consistent units/frames, and deterministic initialization for repeatable tests.
+          Multiple game modes: position hold, velocity control, and direct gamepad input, using a cascaded PID
+          similar to the PX4 Cascade PID. Accurate mechanics are preserved under the hood.
         </p>
         <ul class="feature__bullets">
           <li>Consistent SI conversions and motor response curves.</li>
           <li>Deterministic startup; stable transitions across modes.</li>
         </ul>
-        <div class="cta">
-          <a class="btn" href="clips/gamemode-selection.html">See the clip</a>
-        </div>
+        
       </div>
     </section>
   </main>
@@ -102,6 +113,7 @@
     <section class="feature">
       <div class="feature__media">
         <img class="feature__image" src="assets/img/sensors-overlay.jpg" alt="IMU, GPS, barometer, and magnetometer overlay" onerror="this.style.display='none'">
+        <iframe class="feature__video" src="https://www.youtube.com/embed/vpfzer_iZkw" title="Debug Area / Sensor Overlays" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
       <div class="feature__text">
         <h2>Sensor Suite & Fusion</h2>
@@ -111,11 +123,10 @@
         </p>
         <ul class="feature__bullets">
           <li>Noise models calibrated to expected real-world variance.</li>
+          <li>Gaussian noise generation via Box–Muller transform for repeatable realism.</li>
           <li>Time-aligned streams for EKF/UKF pipelines.</li>
         </ul>
-        <div class="cta">
-          <a class="btn" href="clips/sensor-suite-fusion.html">See the clip</a>
-        </div>
+        
       </div>
     </section>
   </main>
@@ -129,20 +140,21 @@
     <section class="feature alt">
       <div class="feature__media">
         <img class="feature__image" src="assets/img/hud-controls.jpg" alt="World editing, weather toggles, and utilities" onerror="this.style.display='none'">
+        <iframe class="feature__video" src="https://www.youtube.com/embed/yFlgFvDDXzA" title="Sim World Manipulation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
       <div class="feature__text">
         <h2>Sim World Manipulation</h2>
         <p>
-          Tools to manipulate the simulated world: spawn/transform assets, adjust lighting and atmospherics, and
-          script scenarios for repeatable tests. Lightweight HUD elements expose controls without clutter.
+          Control the simulation rate and entities at runtime. Change the tick speed to slow the sim down for
+          careful inspection or speed it up for stress tests; this influences physics stepping, controller timing,
+          and sensor update rates. A Drone Manager can spawn multiple drones, and you can possess any one to control
+          it individually as needed.
         </p>
         <ul class="feature__bullets">
-          <li>Scenario scripting and quick world edits.</li>
-          <li>Performance-friendly UI for rapid iteration.</li>
+          <li>Adjustable tick speed: slow-motion debugging or accelerated runs.</li>
+          <li>Drone Manager: spawn fleets; possess any drone for individual control.</li>
         </ul>
-        <div class="cta">
-          <a class="btn" href="clips/sim-world-manipulation.html">See the clip</a>
-        </div>
+        
       </div>
     </section>
   </main>
@@ -155,21 +167,47 @@
   <main class="container">
     <section class="feature">
       <div class="feature__media">
-        <img class="feature__image" src="assets/img/framework-blocks.jpg" alt="Managers and components architecture" onerror="this.style.display='none'">
+        <div class="slider" id="rl-slider" aria-label="Reinforcement learning media carousel" data-loop="true">
+          <button class="slider__btn slider__btn--prev" aria-label="Previous">
+            &#10094;
+          </button>
+          <div class="slider__viewport">
+            <div class="slider__track">
+              <div class="slider__slide">
+                <figure class="slide-media">
+                  <img src="assets/img/rl-1.gif" alt="RL training visualization 1" onerror="this.style.display='none'">
+                  <figcaption class="slide-caption">Early RL policy demonstrating obstacle avoidance and navigation.</figcaption>
+                </figure>
+              </div>
+              <div class="slider__slide">
+                <img src="assets/img/unreal-hero.jpg" alt="Unreal scene" onerror="this.style.display='none'">
+              </div>
+              <div class="slider__slide">
+                <figure class="slide-media">
+                  <img src="assets/img/rl-2.png" alt="RL future goals visualization" onerror="this.style.display='none'">
+                  <figcaption class="slide-caption">Future goal: implement wind/atmospherics and environmental effects.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+          <button class="slider__btn slider__btn--next" aria-label="Next">
+            &#10095;
+          </button>
+        </div>
       </div>
       <div class="feature__text">
-        <h2>WIP and In the Future</h2>
+        <h2>ReinForcement Learning and Future Implementation</h2>
         <p>
-          Work in progress and roadmap items across tooling, controls, and evaluation: wind/atmospherics, richer HUD,
-          RL training harnesses, and broader benchmarking — all on top of a modular manager architecture.
+          Near-term: PX4 component nearing completion (geocoordinates, rotation, heading) and sensor fusion working
+          with minor residual errors to be tuned out. Looking ahead: richer HUD, wind/atmospherics, and deeper
+          utilization for RL training and benchmarking.
         </p>
         <ul class="feature__bullets">
-          <li>Planned: wind/atmospherics, richer HUD, expanded benchmarking.</li>
-          <li>Planned: RL training harnesses and sim-to-real validation suites.</li>
+          <li>PX4 component close: geocoordinates, rotation, heading ready.</li>
+          <li>Sensor fusion working; small errors remain for calibration.</li>
+          <li>Planned: richer HUD, wind/atmospherics, expanded RL utilization.</li>
         </ul>
-        <div class="cta">
-          <a class="btn" href="clips/wip-future.html">See the clip</a>
-        </div>
+        
       </div>
     </section>
   </main>
