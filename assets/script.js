@@ -60,4 +60,60 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   document.querySelectorAll('.slider').forEach(initSlider);
+
+  // Lightbox for slider images
+  const createLightbox = () => {
+    const lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.innerHTML = `
+      <div class="lightbox__content" role="dialog" aria-modal="true" aria-label="Expanded media">
+        <button class="lightbox__close" aria-label="Close">\u2715</button>
+        <img class="lightbox__img" alt="Expanded image" />
+        <div class="lightbox__caption"></div>
+      </div>
+    `;
+    document.body.appendChild(lb);
+    return lb;
+  };
+
+  const lightbox = createLightbox();
+  const lbImg = lightbox.querySelector('.lightbox__img');
+  const lbCap = lightbox.querySelector('.lightbox__caption');
+  const lbClose = lightbox.querySelector('.lightbox__close');
+
+  const openLightbox = (src, alt, caption) => {
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    lbCap.textContent = caption || alt || '';
+    lightbox.classList.add('is-open');
+    document.body.classList.add('modal-open');
+  };
+  const closeLightbox = () => {
+    lightbox.classList.remove('is-open');
+    document.body.classList.remove('modal-open');
+    // Clean up src to stop any loading
+    lbImg.src = '';
+  };
+
+  // Close handlers: button, Escape, backdrop click
+  lbClose.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+  });
+  lightbox.addEventListener('click', (e) => {
+    // Close when clicking outside content
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Delegate clicks: only images inside sliders
+  document.body.addEventListener('click', (e) => {
+    const img = e.target.closest('.slider .slider__slide img');
+    if (!img) return;
+    // Ignore clicks on videos etc. Only images match the selector
+    // Attempt to pull caption from adjacent figcaption if present
+    const fig = img.closest('figure');
+    const captionText = fig?.querySelector('figcaption')?.textContent?.trim();
+    // Use natural size if available; srcset may be present later — using current src
+    openLightbox(img.currentSrc || img.src, img.alt, captionText);
+  });
 });
