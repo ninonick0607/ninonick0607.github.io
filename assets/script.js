@@ -61,6 +61,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.slider').forEach(initSlider);
 
+  // QuadSim API control-level explorer
+  document.querySelectorAll('[data-api-explorer]').forEach(explorer => {
+    const tabs = Array.from(explorer.querySelectorAll('.api-tab'));
+    const title = explorer.querySelector('[data-api-output-title]');
+    const copy = explorer.querySelector('[data-api-output-copy]');
+    const boundary = explorer.querySelector('[data-api-boundary]');
+    const stages = Array.from(explorer.querySelectorAll('[data-stage]'));
+
+    const selectTab = (tab, moveFocus = false) => {
+      if (!tab) return;
+      const activePath = new Set((tab.dataset.apiPath || '').split(',').filter(Boolean));
+
+      tabs.forEach(item => {
+        const isActive = item === tab;
+        item.classList.toggle('is-active', isActive);
+        item.setAttribute('aria-selected', String(isActive));
+        item.tabIndex = isActive ? 0 : -1;
+      });
+
+      stages.forEach(stage => {
+        stage.classList.toggle('is-active', activePath.has(stage.dataset.stage));
+      });
+
+      if (title) title.textContent = tab.dataset.apiTitle || '';
+      if (copy) copy.textContent = tab.dataset.apiOutput || '';
+      if (boundary) boundary.textContent = tab.dataset.apiBoundary || '';
+      if (moveFocus) tab.focus();
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => selectTab(tab));
+      tab.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        let nextIndex = index;
+        if (event.key === 'Home') nextIndex = 0;
+        else if (event.key === 'End') nextIndex = tabs.length - 1;
+        else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (index + 1) % tabs.length;
+        else nextIndex = (index - 1 + tabs.length) % tabs.length;
+        selectTab(tabs[nextIndex], true);
+      });
+    });
+
+    selectTab(tabs.find(tab => tab.classList.contains('is-active')) || tabs[0]);
+  });
+
   // Lightbox for slider images
   const createLightbox = () => {
     const lb = document.createElement('div');

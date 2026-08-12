@@ -3,8 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nicolas Nino Fernandez— High-Fidelity Drone Simulation & Controls</title>
-  <meta name="description" content="Portfolio of Nicolas Nino — simulation engineer focused on Unreal Engine drone physics, controls, and sim-to-real." />
+  <title>Nicolas Nino Fernandez — Drone Simulation, Controls &amp; Learning</title>
+  <meta name="description" content="Portfolio of Nicolas Nino Fernandez — simulation and controls work spanning Unity QuadSim, PX4, reinforcement learning, external controllers, and sim-to-real research." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nicolas Nino Fernandez — QuadSim, Controls &amp; Learning" />
+  <meta property="og:description" content="Unity QuadSim, PX4, reinforcement learning, multi-agent simulation, and complete external-controller replacement." />
+  <meta property="og:url" content="https://ninonick0607.github.io/" />
+  <meta property="og:image" content="https://ninonick0607.github.io/assets/img/quadsim-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://ninonick0607.github.io/assets/img/quadsim-og.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700;900&display=swap" rel="stylesheet">
@@ -18,7 +27,7 @@
       <nav class="nav-links">
         <a href="#about">About</a>
         <a href="resume.html">Resume</a>
-        <a href="projects.html">Unreal Project</a>
+        <a href="projects.html">Unity QuadSim</a>
         <a href="media.html">Photos & Videos</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -35,7 +44,7 @@
         Nicolas Nino Fernandez is a Data Science student at the University of Central Florida with academic interests in machine learning, reinforcement learning, robotics, control theory, and physics-based modeling. His focus is on connecting theoretical methods with practical implementation, aiming to build systems that remain consistent from simulation to reality.  
       </p>
       <p>
-        Current projects include high-fidelity quadrotor simulation in Unreal Engine 5 with C++ and ROS 2, emphasizing accurate dynamics, reproducible pipelines, and modular design. Work spans cascaded PID controllers, reinforcement learning for navigation, and ROS 2 bridges for telemetry and control.  
+        Current work centers on Unity QuadSim: a modular quadrotor research simulator with a Python SDK, deterministic experiment control, PX4 integration, visual reinforcement learning, multi-agent scenarios, and complete external-controller replacement. The same work extends into geometric control, adaptive ResNet disturbance compensation, and ROS 2 / PX4 deployment paths.
       </p>
         </div>
         <div class="card headshot-card">
@@ -51,12 +60,13 @@
       <h2>Technical Competencies</h2>
 
       <div class="badges card" style="margin-bottom:1rem">
-        <span class="badge">Unreal Engine 5</span>
-        <span class="badge">ROS 2</span>
+        <span class="badge">Unity</span>
+        <span class="badge">QuadSimLib</span>
         <span class="badge">PX4</span>
         <span class="badge">ZeroMQ</span>
-        <span class="badge">HITL/SITL</span>
-        <span class="badge">PPO · SB3 · Gym</span>
+        <span class="badge">Lockstep · SITL/HIL</span>
+        <span class="badge">PPO · SB3 · Gymnasium</span>
+        <span class="badge">ROS 2</span>
       </div>
 
       <div class="comp-cards">
@@ -72,41 +82,45 @@
         <article class="comp-card">
           <header class="comp-card__head"><h3>Simulation & Modeling</h3></header>
           <ul class="comp-card__list">
-            <li>Unreal Engine · Blueprints</li>
+            <li>Unity · Physics-based vehicles</li>
+            <li>Deterministic &amp; headless runs</li>
             <li>Isaac Sim · Gazebo · Webots</li>
-            <li>Simulink · Blender</li>
           </ul>
         </article>
 
         <article class="comp-card">
           <header class="comp-card__head"><h3>Controls & ML</h3></header>
           <ul class="comp-card__list">
-            <li>Cascaded PID · Nonlinear</li>
-            <li>PPO (Stable-Baselines3)</li>
-            <li>Estimator-ready covariances</li>
+            <li>Cascaded PID · Geometric control</li>
+            <li>Adaptive ResNet compensation</li>
+            <li>PPO · Visual &amp; multi-agent RL</li>
           </ul>
         </article>
 
         <article class="comp-card">
           <header class="comp-card__head"><h3>Systems & I/O</h3></header>
           <ul class="comp-card__list">
-            <li>ROS 1/2 · PX4 · ArduPilot</li>
-            <li>ZeroMQ · Real-time loops</li>
-            <li>HITL/SITL test harnesses</li>
+            <li>ROS 1/2 · PX4 · MAVLink</li>
+            <li>ZeroMQ · MessagePack · Streaming</li>
+            <li>Lockstep · HIL/SITL harnesses</li>
           </ul>
         </article>
       </div>
     </section>
   </main>
 
-  <!-- UNREAL project band (full-bleed, no parallax) -->
-  <section class="immersive">
-    <img class="immersive-img" src="assets/img/unreal-hero.jpg" alt="Unreal Engine drone simulation scene">
+  <!-- QuadSim project band -->
+  <section class="immersive immersive--system">
+    <div class="immersive-system" aria-hidden="true">
+      <div class="immersive-system__rail"><span>MISSION</span><i></i><span>POSITION</span><i></i><span>VELOCITY</span></div>
+      <div class="immersive-system__rail"><span>ATTITUDE</span><i></i><span>RATE</span><i></i><span>WRENCH</span></div>
+      <div class="immersive-system__rail"><span>PX4</span><i></i><span>RL</span><i></i><span>MULTI-AGENT</span></div>
+    </div>
     <div class="immersive__overlay">
       <div class="immersive__text">
-        <div class="kicker">Unreal Engine • Quadrotor • Sim-to-Real</div>
-        <h1 class="tagline">High-fidelity drone simulation — physics, sensors, PX4/ROS 2.</h1>
-        <a class="btn primary immersive__cta" href="projects.html">Explore the Project</a>
+        <div class="kicker">Unity • QuadSimLib • PX4 • Reinforcement Learning</div>
+        <h1 class="tagline">A research platform for quadrotor dynamics, control, autonomy, and learning.</h1>
+        <a class="btn primary immersive__cta" href="projects.html">Explore Unity QuadSim</a>
       </div>
     </div>
   </section>

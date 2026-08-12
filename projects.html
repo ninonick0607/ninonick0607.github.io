@@ -3,216 +3,471 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Unreal Drone Project — Nicolas Nino Fernandez</title>
-  <meta name="description" content="Deep dive into Nicolas Nino’s high-fidelity Unreal drone simulation: PX4, ROS 2, sensors, dynamics, UI, and extensible architecture." />
+  <title>Unity QuadSim — Nicolas Nino Fernandez</title>
+  <meta name="description" content="A deep dive into Unity QuadSim and QuadSimLib: interactive simulation control, deterministic experiments, PX4, reinforcement learning, multi-agent scenarios, sensors, and complete external-controller replacement." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Unity QuadSim" />
+  <meta property="og:description" content="A Unity-based quadrotor research platform supporting hierarchical control, PX4 integration, reinforcement learning, and multi-agent experiments." />
+  <meta property="og:url" content="https://ninonick0607.github.io/projects.html" />
+  <meta property="og:image" content="https://ninonick0607.github.io/assets/img/quadsim-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Unity QuadSim" />
+  <meta name="twitter:description" content="Unity, PX4, reinforcement learning, multi-agent simulation, and full external-controller replacement." />
+  <meta name="twitter:image" content="https://ninonick0607.github.io/assets/img/quadsim-og.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700;900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-  <!-- Sticky nav -->
   <header class="nav">
     <div class="container nav-inner">
-      <div class="brand"><span class="dot"></span> <span>Nicolas Nino Fernandez</span></div>
-      <nav class="nav-links">
+      <a class="brand" href="index.html" aria-label="Nicolas Nino Fernandez home"><span class="dot"></span> <span>Nicolas Nino Fernandez</span></a>
+      <nav class="nav-links" aria-label="Primary navigation">
         <a href="index.html#about">About</a>
         <a href="resume.html">Resume</a>
-        <a href="projects.html">Unreal Project</a>
-        <a href="media.html">Photos & Videos</a>
+        <a href="projects.html" aria-current="page">Unity QuadSim</a>
+        <a href="media.html">Photos &amp; Videos</a>
         <a href="index.html#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- Page intro -->
-  <main class="container">
-    <section class="page-intro">
-      <h1>Unreal Drone Simulation — Deep Dive</h1>
-      <p class="subline">
-        A modular simulation focused on accurate flight dynamics, realistic sensors, and clean interfaces.
-        This page highlights the core pillars with short explanations and visual evidence.
-      </p>
-    </section>
-  </main>
+  <main>
+    <div class="container">
+      <section class="project-intro" id="overview">
+        <div class="project-intro__copy">
+          <div class="kicker">Quadrotor simulation and autonomy research</div>
+          <h1>Unity QuadSim</h1>
+          <p class="project-lede">
+            A modular quadrotor simulation platform for flight-control development, deterministic experimentation,
+            PX4 integration, reinforcement learning, and multi-agent research. The system supports both its internal
+            cascaded controller and external control at multiple levels of the flight stack.
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="#api">Control interfaces</a>
+            <a class="btn" href="#rl">Reinforcement learning</a>
+            <a class="btn" href="https://github.com/ninonick0607/QuadSimLib" target="_blank" rel="noopener">QuadSimLib on GitHub</a>
+          </div>
+        </div>
 
-  <!-- ===== Feature 1: Python, ROS 2, and RViz ===== -->
-  <section class="feature-hero">
-    <!-- Put a wide screenshot/diagram here -->
-    <!-- Example image path: assets/img/px4-ros-hero.jpg -->
-    <img class="feature-hero__media" src="assets/img/px4-ros-hero.jpg" alt="Python nodes driving ROS 2 topics with RViz visualization" onerror="this.style.display='none'">
-  </section>
-
-  <main class="container">
-    <section class="feature">
-      <div class="feature__media">
-        <div class="slider slider--video" aria-label="ROS 2 and RViz media carousel">
-          <div class="slider__viewport">
-            <div class="slider__track">
-              <div class="slider__slide">
-                <iframe class="feature__video" src="https://www.youtube.com/embed/r3Lv_NHnohc" title="Python, ROS 2, and RViz" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-              </div>
-              <div class="slider__slide">
-                <iframe class="feature__video" src="https://www.youtube.com/embed/OPRhFV7G6LY" title="ROS 2 / RViz alternate view" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-              </div>
+        <div class="project-console" aria-label="QuadSim capability summary">
+          <div class="project-console__bar">
+            <span><i class="status-dot is-live"></i>SIM ONLINE</span>
+            <span>EXTERNAL AUTHORITY</span>
+          </div>
+          <div class="project-console__body">
+            <p class="project-console__label">CONTROL PATH</p>
+            <div class="console-stack">
+              <span>MISSION</span><span>POSITION</span><span>VELOCITY</span><span>ATTITUDE</span><span>RATE</span><span>WRENCH</span><span>MOTORS</span>
+            </div>
+            <div class="console-readout">
+              <div><strong>250 Hz</strong><span>physics-ready loop</span></div>
+              <div><strong>ENU / FLU</strong><span>canonical frames</span></div>
+              <div><strong>N agents</strong><span>atomic stepping</span></div>
             </div>
           </div>
-          <button class="slider__btn slider__btn--prev" aria-label="Previous">&#10094;</button>
-          <button class="slider__btn slider__btn--next" aria-label="Next">&#10095;</button>
         </div>
-      </div>
-      <div class="feature__text">
-        <h2>Python, ROS 2, and RViz</h2>
-        <p>
-          Python nodes publish/subscribe ROS 2 topics for telemetry and control while RViz visualizes frames,
-          TF, and sensor streams. Clean message contracts keep Unreal↔ROS 2 data aligned and debuggable.
-        </p>
-        <ul class="feature__bullets">
-          <li>Structured topics/services and TF consistency.</li>
-          <li>Thread-safe mirroring between engine and middleware.</li>
-          <li>In the clip, RViz visualizes TF frames, topic overlays, and markers for fast alignment/debug.</li>
-          <li>ROS 2 + DDS real-to-sim TeleOp — see the second clip.</li>
-        </ul>
-        
-      </div>
-    </section>
-  </main>
+      </section>
+    </div>
 
-  <!-- ===== Feature 2: Gamemode Selection with Accurate Mechanics ===== -->
-  <section class="feature-hero">
-    <img class="feature-hero__media" src="assets/img/dynamics-hero.jpg" alt="Gamemode selection and flight mechanics" onerror="this.style.display='none'">
-  </section>
+    <div class="project-nav-wrap">
+      <nav class="container project-nav" aria-label="QuadSim page sections">
+        <a href="#ui">Runtime UI</a>
+        <a href="#experiments">Experiment control</a>
+        <a href="#api">QuadSimLib API</a>
+        <a href="#controller">Custom controller</a>
+        <a href="#px4">PX4</a>
+        <a href="#rl">RL</a>
+        <a href="#multi-agent">Multi-agent</a>
+        <a href="#environment">Environment</a>
+      </nav>
+    </div>
 
-  <main class="container">
-    <section class="feature alt">
-      <div class="feature__media">
-        <img class="feature__image" src="assets/img/dynamics-graph.jpg" alt="Mode logic, thrust/drag tuning, stability charts" onerror="this.style.display='none'">
-        <iframe class="feature__video" src="https://www.youtube.com/embed/WqrMnsxLJ0M" title="Gamemode Selection and Mechanics" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="feature__text">
-        <h2>Gamemode Selection</h2>
-        <p>
-          Multiple game modes: position hold, velocity control, and direct gamepad input, using a cascaded PID
-          similar to the PX4 Cascade PID. Accurate mechanics are preserved under the hood.
-        </p>
-        <ul class="feature__bullets">
-          <li>Consistent SI conversions and motor response curves.</li>
-          <li>Deterministic startup; stable transitions across modes.</li>
-        </ul>
-        
-      </div>
-    </section>
-  </main>
+    <div class="container">
+      <section class="capability-overview" aria-labelledby="capability-title">
+        <div class="section-heading">
+          <div>
+            <div class="kicker">Research capabilities</div>
+            <h2 id="capability-title">Integrated simulation and experimentation stack</h2>
+          </div>
+          <p>
+            Unity owns the plant, sensors, scene, and runtime tools. QuadSimLib owns the Python-facing
+            experiment boundary. PX4, custom controllers, and learning systems plug in without changing the vehicle model.
+          </p>
+        </div>
 
-  <!-- ===== Feature 3: Sensor Suite & Fusion ===== -->
-  <section class="feature-hero">
-    <img class="feature-hero__media" src="assets/img/sensors-hero.jpg" alt="Sensor overlays and fusion view" onerror="this.style.display='none'">
-  </section>
+        <div class="capability-grid">
+          <article class="capability-card"><span>01</span><h3>Runtime operation</h3><p>Vehicle control, parameter tuning, state inspection, spawning, camera management, and authority transfer.</p></article>
+          <article class="capability-card"><span>02</span><h3>Experiment timing</h3><p>Pause, single-step, reset, stream telemetry, and control simulation time while preserving physics timing.</p></article>
+          <article class="capability-card"><span>03</span><h3>Control interfaces</h3><p>Command the system at mission, position, velocity, acceleration, attitude, rate, wrench, or motor level.</p></article>
+          <article class="capability-card"><span>04</span><h3>PX4 integration</h3><p>Run PX4 as the flight controller with QuadSim providing the simulated vehicle dynamics and sensors.</p></article>
+          <article class="capability-card"><span>05</span><h3>Reinforcement learning</h3><p>Construct seeded visual-learning tasks with deterministic stepping, runtime objects, and collision-aware state.</p></article>
+          <article class="capability-card"><span>06</span><h3>Multi-agent simulation</h3><p>Reset and advance stable agent identities together at a shared simulation timestamp.</p></article>
+        </div>
+      </section>
+    </div>
 
-  <main class="container">
-    <section class="feature">
-      <div class="feature__media">
-        <img class="feature__image" src="assets/img/sensors-overlay.jpg" alt="IMU, GPS, barometer, and magnetometer overlay" onerror="this.style.display='none'">
-        <iframe class="feature__video" src="https://www.youtube.com/embed/vpfzer_iZkw" title="Debug Area / Sensor Overlays" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="feature__text">
-        <h2>Sensor Suite & Fusion</h2>
-        <p>
-          IMU, GPS, barometer, and magnetometer signals with tunable noise models and estimator-ready covariances.
-          Outputs align with real-world magnitudes and directions for downstream filters.
-        </p>
-        <ul class="feature__bullets">
-          <li>Noise models calibrated to expected real-world variance.</li>
-          <li>Gaussian noise generation via Box–Muller transform for repeatable realism.</li>
-          <li>Time-aligned streams for EKF/UKF pipelines.</li>
-        </ul>
-        
-      </div>
-    </section>
-  </main>
+    <div class="section-divider"><span>INTERACTIVE SIMULATION</span></div>
 
-  <!-- ===== Feature 4: Sim World Manipulation ===== -->
-  <section class="feature-hero">
-    <img class="feature-hero__media" src="assets/img/gamepad-hero.jpg" alt="Sim world controls and tooling" onerror="this.style.display='none'">
-  </section>
+    <div class="container">
+      <section class="feature feature--showcase" id="ui">
+        <div class="feature__media demo-slot" data-video-slot="runtime-ui">
+          <div class="demo-slot__chrome"><span>VIDEO SLOT 01</span><span>UI CONTROL</span></div>
+          <div class="demo-slot__preview">
+            <span class="demo-slot__eyebrow">Demonstration media placeholder</span>
+            <strong>Runtime interface and telemetry</strong>
+            <p>Drone selection · flight modes · live state · PID tuning · camera views</p>
+          </div>
+          <div class="demo-slot__meta"><span>16:9</span><span>Suggested: 45–60 sec</span></div>
+        </div>
+        <div class="feature__text">
+          <div class="feature-label"><span>01</span> Runtime UI</div>
+          <h2>Runtime vehicle control and system inspection</h2>
+          <p>
+            The in-sim ImGui workspace is more than a HUD. It exposes the controls needed to operate,
+            inspect, and tune a vehicle without leaving the running experiment.
+          </p>
+          <ul class="feature__bullets">
+            <li>Switch among position, velocity, angle, rate, and direct control modes.</li>
+            <li>Select and possess any registered drone, spawn new vehicles, and reset pose or rotation.</li>
+            <li>Watch live motor thrust, IMU, GPS, magnetometer, barometer, and controller targets.</li>
+            <li>Tune every stage of the cascade and save or reload PID histories during a session.</li>
+            <li>Move between follow, orbit, FPV, and free-camera views with adjustable distance and FOV.</li>
+          </ul>
+          <div class="feature-tags"><span>Implemented</span><span>Multi-drone aware</span><span>Live tuning</span></div>
+        </div>
+      </section>
 
-  <main class="container">
-    <section class="feature alt">
-      <div class="feature__media">
-        <img class="feature__image" src="assets/img/hud-controls.jpg" alt="World editing, weather toggles, and utilities" onerror="this.style.display='none'">
-        <iframe class="feature__video" src="https://www.youtube.com/embed/yFlgFvDDXzA" title="Sim World Manipulation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="feature__text">
-        <h2>Sim World Manipulation</h2>
-        <p>
-          Control the simulation rate and entities at runtime. Change the tick speed to slow the sim down for
-          careful inspection or speed it up for stress tests; this influences physics stepping, controller timing,
-          and sensor update rates. A Drone Manager can spawn multiple drones, and you can possess any one to control
-          it individually as needed.
-        </p>
-        <ul class="feature__bullets">
-          <li>Adjustable tick speed: slow-motion debugging or accelerated runs.</li>
-          <li>Drone Manager: spawn fleets; possess any drone for individual control.</li>
-        </ul>
-        
-      </div>
-    </section>
-  </main>
+      <section class="feature alt feature--showcase" id="experiments">
+        <div class="feature__media demo-slot" data-video-slot="experiment-control">
+          <div class="demo-slot__chrome"><span>VIDEO SLOT 02</span><span>EXPERIMENT CONTROL</span></div>
+          <div class="demo-slot__preview">
+            <span class="demo-slot__eyebrow">Demonstration media placeholder</span>
+            <strong>Deterministic timing and reset</strong>
+            <p>Single-step inspection · slow motion · accelerated runs · deterministic reset</p>
+          </div>
+          <div class="demo-slot__meta"><span>16:9</span><span>Suggested: 30–45 sec</span></div>
+        </div>
+        <div class="feature__text">
+          <div class="feature-label"><span>02</span> Simulation control</div>
+          <h2>Deterministic simulation timing and experiment control</h2>
+          <p>
+            QuadSim’s clock and physics stepping are explicit. That makes the same scene useful for a visual demo,
+            a carefully inspected controller tick, or an accelerated headless experiment.
+          </p>
+          <ul class="feature__bullets">
+            <li>Pause, resume, single-step, step many ticks, and change free-running time scale.</li>
+            <li>Quantize requested control rates to real physics steps and expose the realized rate and timestep.</li>
+            <li>Use exception-safe lockstep loops that restore pause state and neutralize the vehicle on exit.</li>
+            <li>Reset pose, physics, controller state, simulation time, or a complete seeded episode.</li>
+          </ul>
+          <div class="metric-row">
+            <div><strong>Atomic RPC</strong><span>command, step, and sensor acquisition</span></div>
+            <div><strong>Unpaced mode</strong><span>maximum experiment throughput</span></div>
+            <div><strong>Realized dt</strong><span>shared by control and reward calculations</span></div>
+          </div>
+        </div>
+      </section>
+    </div>
 
-  <!-- ===== Feature 5: WIP and In the Future ===== -->
-  <section class="feature-hero">
-    <img class="feature-hero__media" src="assets/img/framework-hero.jpg" alt="Roadmap and WIP features" onerror="this.style.display='none'">
-  </section>
+    <div class="section-divider"><span>QUADSIMLIB / EXTERNAL CONTROL</span></div>
 
-  <main class="container">
-    <section class="feature">
-      <div class="feature__media">
-        <div class="slider" id="rl-slider" aria-label="Reinforcement learning media carousel" data-loop="true">
-          <button class="slider__btn slider__btn--prev" aria-label="Previous">
-            &#10094;
-          </button>
-          <div class="slider__viewport">
-            <div class="slider__track">
-              <div class="slider__slide">
-                <figure class="slide-media">
-                  <img src="assets/img/rl-1.gif" alt="RL training visualization 1" onerror="this.style.display='none'">
-                  <figcaption class="slide-caption">Early RL policy demonstrating obstacle avoidance and navigation.</figcaption>
-                </figure>
-              </div>
-              <div class="slider__slide">
-                <figure class="slide-media">
-                  <img src="assets/img/rl-3.png" alt="RL training visualization with PX4 integration WIP" onerror="this.style.display='none'">
-                  <figcaption class="slide-caption">WIP: Integrating PX4 into the RL pipeline; state telemetry is live and verified.</figcaption>
-                </figure>
-              </div>
-              <div class="slider__slide">
-                <figure class="slide-media">
-                  <img src="assets/img/rl-2.png" alt="RL future goals visualization" onerror="this.style.display='none'">
-                  <figcaption class="slide-caption">Future goal: implement wind/atmospherics and environmental effects.</figcaption>
-                </figure>
+    <div class="container">
+      <section class="api-section" id="api">
+        <div class="section-heading section-heading--api">
+          <div>
+            <div class="kicker">Python SDK · ZeroMQ · MessagePack</div>
+            <h2>Hierarchical control interfaces from mission commands to actuator inputs</h2>
+          </div>
+          <p>
+            QuadSimLib provides several command boundaries within the flight-control stack. Select an interface
+            to identify which internal controller stages remain active and which stages are replaced by the external client.
+          </p>
+        </div>
+
+        <div class="api-explorer card" data-api-explorer>
+          <div class="api-explorer__tabs" role="tablist" aria-label="QuadSim control levels">
+            <button class="api-tab is-active" type="button" role="tab" aria-selected="true" data-api-title="Scripted mission" data-api-output="Take off, follow a waypoint sequence, hold, change heading, and land as one readable mission." data-api-boundary="The full onboard cascade remains active." data-api-path="mission,position,velocity,attitude,rate,allocator,motors">Mission</button>
+            <button class="api-tab" type="button" role="tab" aria-selected="false" data-api-title="Position command" data-api-output="Track a world-frame ENU waypoint and yaw target while the cascade closes every inner loop." data-api-boundary="Position is the outermost commanded stage." data-api-path="position,velocity,attitude,rate,allocator,motors">Position</button>
+            <button class="api-tab" type="button" role="tab" aria-selected="false" data-api-title="Velocity command" data-api-output="Fly a commanded body-frame velocity and yaw rate—ideal for guidance laws and navigation policies." data-api-boundary="Position control is replaced; the stabilizing inner stack remains." data-api-path="velocity,attitude,rate,allocator,motors">Velocity</button>
+            <button class="api-tab" type="button" role="tab" aria-selected="false" data-api-title="Acceleration command" data-api-output="Drive desired body acceleration and yaw rate directly from a policy or outer-loop controller." data-api-boundary="Guidance supplies acceleration; attitude, rate, and allocation stay onboard." data-api-path="attitude,rate,allocator,motors">Acceleration</button>
+            <button class="api-tab" type="button" role="tab" aria-selected="false" data-api-title="Attitude command" data-api-output="Command roll, pitch, yaw rate, and vertical input for stabilized manual or custom attitude control." data-api-boundary="Outer translation loops are bypassed." data-api-path="attitude,rate,allocator,motors">Attitude</button>
+            <button class="api-tab" type="button" role="tab" aria-selected="false" data-api-title="Body-rate command" data-api-output="Command roll, pitch, and yaw rates with thrust at the inner-loop boundary." data-api-boundary="Only rate control and downstream actuation remain onboard." data-api-path="rate,allocator,motors">Body rate</button>
+            <button class="api-tab" type="button" role="tab" aria-selected="false" data-api-title="Allocated wrench" data-api-output="Send body torque and collective thrust through the real mixer and motor feasibility limits." data-api-boundary="The complete cascaded controller is replaced; allocation and motor dynamics remain." data-api-path="allocator,motors">Allocated wrench</button>
+            <button class="api-tab" type="button" role="tab" aria-selected="false" data-api-title="Direct wrench" data-api-output="Apply body torque and thrust directly to the rigid body for idealized controller validation." data-api-boundary="Cascade, allocator, and motor model are bypassed to isolate controller mathematics." data-api-path="rigidbody">Direct wrench</button>
+            <button class="api-tab" type="button" role="tab" aria-selected="false" data-api-title="Motor passthrough" data-api-output="Drive front-left, front-right, back-left, and back-right motor fractions independently." data-api-boundary="Every onboard controller stage is replaced; only the actuation model remains." data-api-path="motors">Motors</button>
+          </div>
+
+          <div class="api-explorer__display">
+            <div class="api-output">
+              <div class="api-output__status"><i class="status-dot is-live"></i> SELECTED INTERFACE BEHAVIOR</div>
+              <h3 data-api-output-title>Scripted mission</h3>
+              <p data-api-output-copy>Take off, follow a waypoint sequence, hold, change heading, and land as one readable mission.</p>
+              <div class="api-boundary">
+                <span>Controller boundary</span>
+                <strong data-api-boundary>The full onboard cascade remains active.</strong>
               </div>
             </div>
+
+            <div class="control-stack" aria-label="Active control stack for selected command level">
+              <span data-stage="mission">Mission</span>
+              <span data-stage="position">Position</span>
+              <span data-stage="velocity">Velocity</span>
+              <span data-stage="attitude">Attitude</span>
+              <span data-stage="rate">Rate</span>
+              <span data-stage="allocator">Allocator</span>
+              <span data-stage="motors">Motors</span>
+              <span data-stage="rigidbody">Rigid body</span>
+            </div>
           </div>
-          <button class="slider__btn slider__btn--next" aria-label="Next">
-            &#10095;
-          </button>
+        </div>
+
+        <div class="api-support-grid">
+          <article><span>State interface</span><h3>State and sensors</h3><p>Acquire sensor snapshots, controller telemetry, explicit-frame positions and velocities, or subscribed data streams.</p></article>
+          <article><span>Simulation interface</span><h3>World and timing</h3><p>Manage time scale, pause state, stepping, geodetic origin, sensor frame, reset scope, and wind zones.</p></article>
+          <article><span>Perception interface</span><h3>Training cameras</h3><p>Capture per-drone RGB, grayscale, and metric depth frames independently of the operator camera.</p></article>
+          <article><span>Visualization interface</span><h3>Headless experiments</h3><p>Stream paths, targets, tracking error, speed, and experiment metadata to a lightweight live viewer.</p></article>
+        </div>
+      </section>
+
+      <section class="feature feature--showcase" id="controller">
+        <div class="feature__media demo-slot" data-video-slot="geometric-resnet">
+          <div class="demo-slot__chrome"><span>VIDEO SLOT 03</span><span>FULL CONTROLLER REPLACEMENT</span></div>
+          <div class="demo-slot__preview demo-slot__preview--trace">
+            <span class="demo-slot__eyebrow">Demonstration media placeholder</span>
+            <strong>Geometric control with adaptive compensation</strong>
+            <p>Figure-eight tracking · wrench control · wind-on comparison · live path trace</p>
+          </div>
+          <div class="demo-slot__meta"><span>16:9</span><span>Suggested: 60–90 sec</span></div>
+        </div>
+        <div class="feature__text">
+          <div class="feature-label"><span>03</span> External controller</div>
+          <h2>External geometric control and adaptive disturbance compensation</h2>
+          <p>
+            The ResNet/Geometric Controller project demonstrates the deepest API boundary: Unity supplies the
+            vehicle and sensors, while a Lee-style geometric controller owns the trajectory tracking law and returns torque plus collective thrust.
+          </p>
+          <ul class="feature__bullets">
+            <li>Runs in deterministic lockstep using the simulator’s realized timestep.</li>
+            <li>Tracks figure-eight, acrobatic oval, and takeoff–flip–land trajectories.</li>
+            <li>An adaptive JAX ResNet estimates disturbance force and adjusts desired acceleration online.</li>
+            <li>Supports baseline-versus-adaptive logging, path visualization, safety limits, and weight checkpoints.</li>
+            <li>The controller core also exposes a PX4 body-rate/thrust path for simulator-to-autopilot studies.</li>
+          </ul>
+          <div class="feature-tags"><span>Allocated wrench</span><span>Lockstep</span><span>Adaptive control</span></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="section-divider"><span>AUTOPILOT INTEGRATION</span></div>
+
+    <div class="container">
+      <section class="feature alt feature--showcase" id="px4">
+        <div class="feature__media">
+          <div class="demo-slot" data-video-slot="px4">
+            <div class="demo-slot__chrome"><span>VIDEO SLOT 04</span><span>PX4 SITL / HIL</span></div>
+            <div class="demo-slot__preview">
+              <span class="demo-slot__eyebrow">Demonstration media placeholder</span>
+              <strong>PX4 SITL/HIL closed-loop operation</strong>
+              <p>Arm · takeoff · offboard trajectory · QGroundControl view · motor return path</p>
+            </div>
+            <div class="demo-slot__meta"><span>16:9</span><span>Suggested: 60–90 sec</span></div>
+          </div>
+          <div class="system-flow" aria-label="PX4 integration flow">
+            <span>QuadSim plant</span><b>HIL sensors →</b><span>PX4 SITL</span><b>← motors</b><span>Unity actuation</span>
+          </div>
+        </div>
+        <div class="feature__text">
+          <div class="feature-label"><span>04</span> PX4 integration</div>
+          <h2>PX4 integration with QuadSim as the simulated plant</h2>
+          <p>
+            In PX4 mode, the bridge streams simulated inertial, GPS, barometric, and magnetic data into PX4,
+            waits for actuator output, applies the four returned motor commands, and advances the next physics tick.
+          </p>
+          <ul class="feature__bullets">
+            <li>MAVLink HIL sensor and actuator loop with explicit motor-order mapping.</li>
+            <li>One frame boundary for ENU/FLU and PX4’s NED/FRD conventions.</li>
+            <li>Realtime offboard control for interactive sessions and a dedicated simulation-time lockstep runner.</li>
+            <li>PX4-native position, acceleration, attitude, and rate/thrust setpoints.</li>
+            <li>Thrust calibration, motor sweeps, health checks, and frame verification tools.</li>
+          </ul>
+          <div class="feature-tags"><span>Implemented</span><span>MAVLink</span><span>Faster-than-realtime capable</span></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="section-divider"><span>LEARNING &amp; AUTONOMY</span></div>
+
+    <div class="container">
+      <section class="feature feature--showcase" id="rl">
+        <div class="feature__media demo-slot" data-video-slot="rl-training">
+          <div class="demo-slot__chrome"><span>VIDEO SLOT 05</span><span>REINFORCEMENT LEARNING</span></div>
+          <div class="demo-slot__preview demo-slot__preview--camera">
+            <span class="demo-slot__eyebrow">Demonstration media placeholder</span>
+            <strong>Policy observation and environment state</strong>
+            <p>RGB-D observation · seeded obstacle field · PPO training · evaluation rollout</p>
+          </div>
+          <div class="demo-slot__meta"><span>16:9</span><span>Suggested: 60–90 sec</span></div>
+        </div>
+        <div class="feature__text">
+          <div class="feature-label"><span>05</span> Reinforcement learning</div>
+          <h2>Deterministic reinforcement-learning environment interface</h2>
+          <p>
+            QuadSim provides the physical facts and a clean episode boundary. Python remains free to define observations,
+            rewards, termination, policies, replay, and the training framework.
+          </p>
+          <ul class="feature__bullets">
+            <li>Atomic seeded reset and step calls prevent free-running frames between action and observation.</li>
+            <li>Per-drone RGB, grayscale, and metric-depth capture from a dedicated training camera.</li>
+            <li>Runtime box, sphere, cylinder, and goal primitives are pooled and replaced with each scenario.</li>
+            <li>Stable object IDs and collision events make rewards and termination unambiguous.</li>
+            <li>A runnable Gymnasium / Stable-Baselines3 PPO RGB-D goal-hover task covers training and evaluation.</li>
+          </ul>
+          <div class="feature-tags"><span>PPO example</span><span>RGB-D</span><span>Seeded episodes</span></div>
+        </div>
+      </section>
+
+      <section class="feature alt feature--showcase" id="multi-agent">
+        <div class="feature__media demo-slot" data-video-slot="multi-agent">
+          <div class="demo-slot__chrome"><span>VIDEO SLOT 06</span><span>MULTI-AGENT</span></div>
+          <div class="demo-slot__preview">
+            <span class="demo-slot__eyebrow">Demonstration media placeholder</span>
+            <strong>Synchronized multi-agent transitions</strong>
+            <p>Team identities · simultaneous actions · duel geometry · shared scenario reset</p>
+          </div>
+          <div class="demo-slot__meta"><span>16:9</span><span>Suggested: 45–75 sec</span></div>
+        </div>
+        <div class="feature__text">
+          <div class="feature-label"><span>06</span> Multi-agent simulation</div>
+          <h2>Atomic multi-agent episode reset and simulation stepping</h2>
+          <p>
+            Multi-agent steps apply every action before physics advances, then capture all vehicle states and events
+            at the same simulation timestamp. Stable identities survive across the complete experiment boundary.
+          </p>
+          <ul class="feature__bullets">
+            <li>Discover registered vehicles by persistent index, agent ID, and team ID.</li>
+            <li>Reset all poses, identities, seeded sensors, goals, and obstacles as one atomic operation.</li>
+            <li>Issue position, velocity, acceleration, attitude, rate, motor, or wrench actions to every agent together.</li>
+            <li>Receive synchronized privileged state plus agent, object, ground-contact, and invalid-state events.</li>
+            <li>Task-side duel helpers provide capture cones, relative geometry, rewards, and ego-centric observations.</li>
+          </ul>
+          <div class="feature-tags"><span>Atomic step</span><span>Stable identity</span><span>Team scenarios</span></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="section-divider"><span>PHYSICS, SENSORS &amp; WORLD CONTROL</span></div>
+
+    <div class="container">
+      <section class="feature feature--showcase" id="sensors">
+        <div class="feature__media demo-slot" data-video-slot="sensors">
+          <div class="demo-slot__chrome"><span>VIDEO SLOT 07</span><span>SENSORS &amp; FRAMES</span></div>
+          <div class="demo-slot__preview demo-slot__preview--sensor">
+            <span class="demo-slot__eyebrow">Demonstration media placeholder</span>
+            <strong>Simulated sensor measurements and frames</strong>
+            <p>Noise on/off · sensor rates · GPS origin · ENU/FLU and NED/FRD comparison</p>
+          </div>
+          <div class="demo-slot__meta"><span>16:9</span><span>Suggested: 45–60 sec</span></div>
+        </div>
+        <div class="feature__text">
+          <div class="feature-label"><span>07</span> Sensor suite</div>
+          <h2>Multi-rate sensor simulation with explicit coordinate conventions</h2>
+          <p>
+            The vehicle publishes IMU, GPS, barometer, and magnetometer data at independent simulation-time rates,
+            with deterministic noise and georeferenced outputs for controller, PX4, and sim-to-real workflows.
+          </p>
+          <ul class="feature__bullets">
+            <li>Body velocity, angular rate, specific force, attitude, WGS84 position, NED GPS velocity, pressure, and magnetic field.</li>
+            <li>Seed-derived noise streams can be replayed exactly across matching episode resets.</li>
+            <li>Every body-frame payload self-identifies as FLU or FRD; world fields stay canonical ENU.</li>
+            <li>Live UI readouts and SDK accessors make frame and magnitude sanity checks visible.</li>
+          </ul>
+          <div class="feature-tags"><span>IMU</span><span>GPS</span><span>Barometer</span><span>Magnetometer</span></div>
+        </div>
+      </section>
+
+      <section class="feature alt feature--showcase" id="environment">
+        <div class="feature__media demo-slot" data-video-slot="environment">
+          <div class="demo-slot__chrome"><span>VIDEO SLOT 08</span><span>ENVIRONMENT / WIP</span></div>
+          <div class="demo-slot__preview demo-slot__preview--wind">
+            <span class="demo-slot__eyebrow">Demonstration media placeholder</span>
+            <strong>Wind-field and disturbance experiments</strong>
+            <p>Wind volume · turbulence · API toggle · force log · planned environment panel</p>
+          </div>
+          <div class="demo-slot__meta"><span>16:9</span><span>Suggested: 45–60 sec</span></div>
+        </div>
+        <div class="feature__text">
+          <div class="feature-label"><span>08</span> Wind &amp; environment</div>
+          <h2>Runtime disturbance modeling and environmental control</h2>
+          <p>
+            Wind volumes already apply velocity-relative force with directional falloff, spatial spread, and turbulence.
+            They can be switched or retuned from Python and optionally log ground-truth applied force for controller studies.
+          </p>
+          <div class="status-list">
+            <div><span class="status-pill is-ready">Working</span><p>Scene wind volumes, runtime on/off and speed control, turbulence, visualization, and diagnostic force logging.</p></div>
+            <div><span class="status-pill is-ready">Working</span><p>Runtime RL obstacles and goal markers, plus multi-drone spawning and scene-level configuration.</p></div>
+            <div><span class="status-pill is-wip">In progress</span><p>A first-class environment UI and richer atmospheric, weather, and scenario controls.</p></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="architecture-band">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <div class="kicker">System architecture</div>
+            <h2>Modular software architecture and research interfaces</h2>
+          </div>
+          <p>Vehicle configuration, simulation services, controllers, sensors, UI, and the Python boundary are separated so each can evolve without rewriting the rest.</p>
+        </div>
+        <div class="architecture-grid">
+          <article><span>Unity package</span><h3>Reusable runtime package</h3><p>Installable Unity package, starter sample, reusable prefabs, and scene bootstrap components.</p></article>
+          <article><span>YAML vehicles</span><h3>Configuration-defined vehicle models</h3><p>Mass, inertia, geometry, thrust limits, control limits, and gains are specified outside the controller code.</p></article>
+          <article><span>Authority model</span><h3>Command-source arbitration</h3><p>UI, internal systems, and external clients negotiate command authority over the vehicle.</p></article>
+          <article><span>Python SDK</span><h3>Unified experiment interface</h3><p>World control, flight commands, raw control, sensors, images, RL episodes, and streaming share one connection owner.</p></article>
+          <article><span>Headless execution</span><h3>Batch experiment support</h3><p>Run without the interactive camera and stream only the paths and metrics required by the experiment.</p></article>
+          <article><span>ROS 2 / PX4</span><h3>Deployment-oriented interfaces</h3><p>The geometric controller core is shared with a ROS 2 PX4 node, keeping deployment-specific frames and thrust mapping at the boundary.</p></article>
         </div>
       </div>
-      <div class="feature__text">
-        <h2>ReinForcement Learning and Future Implementation</h2>
-        <p>
-          Near-term: PX4 component nearing completion (geocoordinates, rotation, heading) and sensor fusion working
-          with minor residual errors to be tuned out. Looking ahead: richer HUD, wind/atmospherics, and deeper
-          utilization for RL training and benchmarking.
-        </p>
-        <ul class="feature__bullets">
-          <li>PX4 component close: geocoordinates, rotation, heading ready.</li>
-          <li>Sensor fusion working; small errors remain for calibration.</li>
-          <li>Planned: richer HUD, wind/atmospherics, expanded RL utilization.</li>
-        </ul>
-        
-      </div>
     </section>
+
+    <div class="container">
+      <section class="media-plan" id="media-plan">
+        <div class="section-heading">
+          <div>
+            <div class="kicker">Planned experimental demonstrations</div>
+            <h2>Demonstration media plan</h2>
+          </div>
+          <p>Each numbered slot above has a focused story, suggested duration, and footage checklist so new clips can drop in without restructuring the page.</p>
+        </div>
+        <div class="shot-list">
+          <div><span>01</span><p><strong>Runtime UI</strong> — control modes, tuning, state HUD, spawning, and camera work.</p></div>
+          <div><span>02</span><p><strong>Experiment control</strong> — pause, step, time scale, lockstep, and repeatable reset.</p></div>
+          <div><span>03</span><p><strong>Controller replacement</strong> — geometric tracking with baseline and adaptive ResNet runs.</p></div>
+          <div><span>04</span><p><strong>PX4</strong> — HIL bring-up, offboard flight, and motor feedback into Unity.</p></div>
+          <div><span>05</span><p><strong>Reinforcement learning</strong> — policy observations, PPO training, and evaluation.</p></div>
+          <div><span>06</span><p><strong>Multi-agent</strong> — shared resets, simultaneous actions, team state, and duel helpers.</p></div>
+          <div><span>07</span><p><strong>Sensors</strong> — noise, rates, frames, georeferencing, and live telemetry.</p></div>
+          <div><span>08</span><p><strong>Environment</strong> — wind/turbulence today and the expanding world controls.</p></div>
+        </div>
+      </section>
+
+      <section class="project-cta">
+        <div>
+          <div class="kicker">Source repositories</div>
+          <h2>Simulator runtime, Python SDK, and external-controller implementation</h2>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="https://github.com/ninonick0607/Unity_QuadSim" target="_blank" rel="noopener">Unity QuadSim</a>
+          <a class="btn" href="https://github.com/ninonick0607/QuadSimLib" target="_blank" rel="noopener">QuadSimLib</a>
+          <a class="btn" href="https://github.com/ninonick0607/Resnet-GeometricController" target="_blank" rel="noopener">ResNet / Geometric Controller</a>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer>
